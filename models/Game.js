@@ -1,20 +1,37 @@
-const Player = require('./Player');
-const Tournament = require('./Tournament');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
-Player.belongsToMany(Tournament, {
-    through: "player_tournament",
-    as: "tournaments",
-    foreignKey: "player_id",
-    onDelete: 'CASCADE'
-  });
+class Game extends Model {}
 
-Tournament.belongsToMany(Player, {
-  through: "player_tournament",
-  as: "player",
-  foreignKey: "tournament_id",
-  onDelete: 'CASCADE'
-});
+Game.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+    },
+    cover_art: {
+      type: DataTypes.TEXT,
+    },
+    game_type: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'Game',
+  }
+);
 
-
-
-module.exports = { Player, Tournament };
+module.exports = Game;
