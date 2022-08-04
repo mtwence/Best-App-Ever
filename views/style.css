@@ -14,7 +14,6 @@ body{
     z-index: 1;
     background-color: rgba(94, 21, 21, 0.679);
     max-width: 360px;
-    height: 300px;
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
@@ -44,3 +43,23 @@ body{
     color:#f2f2f2;
     cursor: pointer;
 }
+
+.form button:hover,.form button:active{
+    background-color: #2d692f;
+    
+}
+
+.form .message{
+    margin: 15px 0 0;
+    color:rgb(255, 255, 255);
+    font-size: 12px;
+}
+
+.form .message a{
+    color: #cff3d0;
+    text-decoration: none;
+}
+.form .register-form{
+    display: none;
+}
+
