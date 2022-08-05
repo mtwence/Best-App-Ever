@@ -1,31 +1,73 @@
 const router = require("express").Router();
-const { Tournament, Player } = require("../models");
-const withAuth = require("../utils/auth");
+const { Game } = require("../models");
+// const withAuth = require("../utils/auth");
 
+// Michaels Codng Section:
 router.get("/", async (req, res) => {
   try {
-    // Get all tournaments and JOIN with player data
-    const tournamentData = await Tournament.findAll({
+    const gameData = await Game.findAll({
       include: [
         {
-          model: Player,
-          attributes: ["name"],
+          attributes: ["cover_art"],
         },
       ],
     });
 
-    const tournaments = tournamentData.map((tournament) =>
-      tournament.get({ plain: true })
-    );
+    const game = gameData.get({ plain: true });
 
     res.render("homepage", {
-      tournaments,
-      // logged_in: req.session.logged_in
+      ...game,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// router.get("/", async (req, res) => {
+//   try {
+//     // Get all tournaments and JOIN with player data
+//     const tournamentData = await Tournament.findAll({
+//       include: [
+//         {
+//           model: Player,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
+
+//     const tournaments = tournamentData.map((tournament) =>
+//       tournament.get({ plain: true })
+//     );
+
+//     res.render("homepage", {
+//       tournaments,
+//       // logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 
 
@@ -35,27 +77,50 @@ router.get("/", async (req, res) => {
 
 //get specific tournament
 //URL should be /tournaments/games/game_id ?
-router.get("/tournament/:id", async (req, res) => {
-  try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: [
-        {
-          model: Player,
-          attributes: ["name"],
-        },
-      ],
-    });
+// router.get("/tournament/:id", async (req, res) => {
+//   try {
+//     const tournamentData = await Tournament.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Player,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
 
-    const tournament = tournamentData.get({ plain: true });
+//     const tournament = tournamentData.get({ plain: true });
 
-    res.render("tournament", {
-      ...tournament,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("tournament", {
+//       ...tournament,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
+<<<<<<< HEAD
+// //get all tournaments
+// router.get("/tournament/:id", async (req, res) => {
+//   try {
+//     const tournamentData = await Tournament.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Player,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
+
+//     const tournament = tournamentData.get({ plain: true });
+
+//     res.render("tournament", {
+//       ...tournament,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+=======
 //get all tournaments
 router.get("/tournaments/", async (req, res) => {
   try {
@@ -81,7 +146,8 @@ router.get("/tournaments/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+>>>>>>> c096b2254d4735fd6700df315431a0a17454d145
 
 
 
-module.exports = router;
+// module.exports = router;
