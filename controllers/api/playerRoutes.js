@@ -3,13 +3,13 @@ const { Player } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const playerData = await Player.create(req.body);
+    const userData = await User.create(req.body);
 
     req.session.save(() => {
-      req.session.player_id = playerData.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(playerData);
+      res.status(200).json(userData);
     });
   } catch (err) {
     res.status(400).json(err);
@@ -18,16 +18,16 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const playerData = await Player.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { email: req.body.email } });
 
-    if (!playerData) {
+    if (!userData) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
-    const validPassword = await playerData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
@@ -37,10 +37,10 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.player_id = playerData.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
       
-      res.json({ player: playerData, message: 'You are now logged in!' });
+      res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {

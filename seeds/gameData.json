@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Valorant",
+        "description": "Tactical 5v5 hero shooter",
+        "cover_art": "../assets/images/Shooters/valorant.jpg",
+        "game_type": "shooter"
+    },
+    {   "name": "Counter Strike: Global Offensive",
+        "description": "Tactical 5v5 shooter",
+        "cover_art": "../assets/images/Shooters/csgo.jpg",
+        "game_type": "shooter"
+    },
+    {
+        "name": "Overwatch",
+        "description": "Brawl 5v5 hero shooter",
+        "cover_art": "../assets/images/Shooters/overwatch.jpg",
+        "game_type": "shooter"
+    },
+    {
+        "name": "Rainbow Six Siege",
+        "description": "Tactical 5v5 hero shooter",
+        "cover_art": "../assets/images/Shooters/rss.jpg",
+        "game_type": "shooter"
+    }
+
+]
