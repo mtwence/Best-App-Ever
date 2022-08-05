@@ -19,7 +19,7 @@ Game.init(
       type: DataTypes.STRING,
     },
     cover_art: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
     },
     game_type: {
       type: DataTypes.STRING,
