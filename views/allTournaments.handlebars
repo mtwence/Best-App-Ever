@@ -1,0 +1,25 @@
+<!-- Loop over each object in the tournaments array -->
+{{#each tournaments as |tournament| }}
+<div class="row mb-4 tournament">
+  <div class="col-md-5">
+    <h2>
+      {{!-- <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}} --}}
+      <a href="/tournament/{{tournament.id}}">{{tournament.name}}</a>
+    </h2>
+    <p>
+      <span for="img" aria-label="money">🎮</span>
+      Minimum<p> </p>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="dollar-amount">{{format_amount tournament.player_quantity}}</span>
+      players!
+    </p>
+    <p>Created by {{tournament.user.name}} on {{format_date tournament.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{tournament.description}}
+    </p>
+  </div>
+</div>
+{{/each}}
