@@ -98,6 +98,7 @@ router.get("/", async (req, res) => {
 //   }
 // });
 
+<<<<<<< HEAD
 // //get all tournaments
 // router.get("/tournament/:id", async (req, res) => {
 //   try {
@@ -119,6 +120,33 @@ router.get("/", async (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
+=======
+//get all tournaments
+router.get("/tournaments/", async (req, res) => {
+  try {
+    // Get all tournaments and JOIN with player data
+    const tournamentData = await Tournament.findAll({
+      include: [
+        {
+          model: Player,
+          attributes: ["name"],
+        },
+      ],
+    });
+
+    const tournaments = tournamentData.map((tournament) =>
+      tournament.get({ plain: true })
+    );
+
+    res.render("allTournaments", {
+      tournaments,
+      // logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+>>>>>>> c096b2254d4735fd6700df315431a0a17454d145
 
 
 
