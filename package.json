@@ -29,6 +29,7 @@
     "fullpage.js": "^4.0.9",
     "gsap": "^3.10.4",
     "heroku": "^7.60.2",
+    "inquirer": "^9.1.0",
     "mysql2": "^2.3.3",
     "node": "^18.7.0",
     "sequelize": "^6.21.3",
