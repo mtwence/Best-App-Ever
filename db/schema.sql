@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS letsplay_db;
+CREATE DATABASE letsplay_db;
