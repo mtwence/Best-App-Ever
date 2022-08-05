@@ -57,9 +57,10 @@ router.get("/tournament/:id", async (req, res) => {
 });
 
 //get all tournaments
-router.get("/tournament/:id", async (req, res) => {
+router.get("/tournaments/", async (req, res) => {
   try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
+    // Get all tournaments and JOIN with player data
+    const tournamentData = await Tournament.findAll({
       include: [
         {
           model: Player,
@@ -68,10 +69,13 @@ router.get("/tournament/:id", async (req, res) => {
       ],
     });
 
-    const tournament = tournamentData.get({ plain: true });
+    const tournaments = tournamentData.map((tournament) =>
+      tournament.get({ plain: true })
+    );
 
-    res.render("tournament", {
-      ...tournament,
+    res.render("allTournaments", {
+      tournaments,
+      // logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
