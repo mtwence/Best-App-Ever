@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Halo 3 Saturday Tourney",
+    "description": "Saturday 7/6.",
+    "player_quantity": 16
+  },
+  {
+    "name": "Valorant Ranked",
+    "description": "going for diamond rank",
+    "player_quantity": 5
+  },
+  {
+    "name": "Apex Ranked",
+    "description": "Playing ranked gold to diamond.",
+    "player_quantity": 3
+  }
+]
