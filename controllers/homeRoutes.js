@@ -1,23 +1,23 @@
 const router = require("express").Router();
-const { Project, User } = require("../models");
+const { Tournament, Player } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const projectData = await Project.findAll({
+    // Get all tournaments and JOIN with player data
+    const tournamentData = await Tournament.findAll({
       include: [
         {
-          model: User,
+          model: Player,
           attributes: ["name"],
         },
       ],
     });
 
-    const projects = projectData.map((project) => project.get({ plain: true }));
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     res.render("homepage", {
-      projects,
+      tournaments,
       // logged_in: req.session.logged_in
     });
   } catch (err) {
