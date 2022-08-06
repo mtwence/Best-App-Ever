@@ -23,6 +23,15 @@ Tournament2.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    player_quantity: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     game2_id: {
       type: DataTypes.INTEGER,
       refereces: {

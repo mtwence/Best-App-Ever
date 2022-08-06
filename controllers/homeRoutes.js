@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Game, Tournament, Player } = require("../models");
+const { Game, Tournament, Player, Game2, Tournament2, Player2 } = require("../models");
 const withAuth = require("../utils/auth");
 
 
@@ -157,58 +157,57 @@ router.get("/tournaments/", async (req, res) => {
   }
 });
 
-//-----------------old get routes-------------------
-// get specific tournament
-// // URL should be /tournaments/games/game_id ?
-// router.get("/tournament/:id", async (req, res) => {
-//   try {
-//     const tournamentData = await Tournament.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Player,
-//           attributes: ["name"],
-//         },
-//       ],
-//     });
+// get specific tournament2
+// URL should be /tournament2s/games/game_id ?
+router.get("/tournament2/:id", async (req, res) => {
+  try {
+    const tournament2Data = await Tournament2.findByPk(req.params.id, {
+      include: [
+        {
+          model: Player2,
+          attributes: ["player2_name"],
+        },
+      ],
+    });
 
-//     const tournament = tournamentData.get({ plain: true });
+    const tournament2 = tournament2Data.get({ plain: true });
 
-//     res.render("tournament", {
-//       ...tournament,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.render("tournament2", {
+      ...tournament2,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
-// //get all tournaments
-// router.get("/tournaments/", async (req, res) => {
-//   try {
-//     // Get all tournaments and JOIN with player data
-//     const tournamentData = await Tournament.findAll({
-//       // include: [
-//         // {
-//         //   model: Player,
-//         //   attributes: ["name"],
-//         // },
-//       // ],
-//     });
+//get all tournament2s
+router.get("/tournament2s/", async (req, res) => {
+  try {
+    // Get all tournament2s and JOIN with player data
+    const tournament2Data = await Tournament2.findAll({
+      // include: [
+        // {
+        //   model: Player2,
+        //   attributes: ["name"],
+        // },
+      // ],
+    });
 
-//     const tournaments = tournamentData.map((tournament) =>
-//       tournament.get({ plain: true })
-//     );
+    const tournament2s = tournament2Data.map((tournament2) =>
+      tournament2.get({ plain: true })
+    );
 
-//     res.render("allTournaments", {
-//       tournaments,
-//       // logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.render("allTournament2s", {
+      tournament2s,
+      // logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-//----------------------------------------------------------------
+
 
 
 
