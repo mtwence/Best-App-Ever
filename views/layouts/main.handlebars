@@ -7,32 +7,29 @@
   <title>Let's Play!</title>
   {{!--bulma CDN--}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
 <body>
   <header>
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+   <a class="navbar-item">
+      <img src="/assets/images/playlogo.png" alt="our logo" width="112" height="28">
     </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-{{!-- links --}}
-  <div class="navbar-menu">
-    <div class="navbar-end">
-      <a class="navbar-item">
-        Logout
-        </a>
-          </div>
+ <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
         </div>
-    </nav>
+      </div>
+    </div>
       <nav>
         {{!-- <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
