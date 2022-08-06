@@ -1,42 +1,61 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
+<body>
+<header>
+  <h1 class="mytitle">Lets Play</h1>
+</header>
+  <section class="columns">
+    <div class="column is-one-quarter middle">
+      <div class="box">
+        <h2 class="title is-4">Login</h2>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+          </div>
+          <input id="username" class="input" type="text" placeholder="Username">
+        </div>
+        <div class="field">
+          <label id="password" class="label">Password</label>
+          <div class="control">
+          </div>
+          <input class="input" type="text" placeholder="Password">
+        </div>
+         <button class="button is-info" id="loginbtn">Login</button>
+         </div>
+         </section>
 
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
+          {{!-- <section class="columns">
+    <div class="column is-one-quarter middle">
+      <div class="box">
+        <h2 class="title is-4">Login</h2>
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+          </div>
+          <input id="firstname" class="input" type="text" placeholder="First name">
+        </div>
+        <div class="field">
+         <label class="label">Last Name</label>
+          <div class="control">
+          </div>
+          <input id="lastname" class="input" type="text" placeholder="Last name">
+        </div>
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+          </div>
+          <input id="username2" class="input" type="text" placeholder="Username">
+        </div>
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+          </div>
+          <input id="password2" class="input" type="text" placeholder="Password">
+        </div>
+       
+        <button class="button is-info" id="signupbtn">Sign Up</button>
       </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+    </div>
+  </section> 
+      --}}
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<script src="/public/js/login.js"></script>
+  <!-- <script src="script.js"></script> -->
+  </body>

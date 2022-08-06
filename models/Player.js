@@ -52,7 +52,7 @@ Player.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Player',
+        modelName: 'player',
     }
 
 )
