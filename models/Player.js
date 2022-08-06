@@ -1,5 +1,5 @@
 const {Model, DataTypes} = require('sequelize');
-const bcrypt = require('bcrypt');
+ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Player extends Model {
@@ -7,53 +7,57 @@ class Player extends Model {
         return bcrypt.compareSync(loginPw, this.password);
 
     }
-}
+ }
 
 Player.init(
     {
         id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
+             type: DataTypes.INTEGER,
+             allowNull: false,
+             primaryKey: true,
+             autoIncrement: true
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+             type: DataTypes.STRING,
+             allowNull: false,
+             validate: {isAlpha:true},
+         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
+             allowNull: false,
+             unique: true,
+             validate: {
+                 isEmail: true,
+             }
+         },
+         password: {
+             type: DataTypes.STRING,
+             allowNull: false,
             validate: {
-                isEmail: true,
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [8],
-            }
-        }
-    },
+                 len: [8],
+             }
+         }
+     },
     {
-        hooks: {
-            beforeCreate: async (newPlayerData) => {
-                newPlayerData.password = await bcrypt.hash(newPlayerData.password, 10);
-                return newPlayerData;
-            },
-            beforeUpdate: async (updatedPlayerData) => {
-                updatedPlayerData.password = await bcrypt.hash(updatedPlayerData.password, 10);
-                return updatedPlayerData;
-            }
-        },
-        sequelize,
-        timestamps: false,
+         hooks: {
+             beforeCreate: async (newUserData) => {
+                 newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+             },
+            // },
+            //  beforeUpdate: async (updatedPlayerData) => {
+            //     updatedPlayerData.password = await bcrypt.hash(updatedPlayerData.password, 10);
+            //      return updatedPlayerData;
+            //  }
+         },
+         sequelize,
+         timestamps: false,
         freezeTableName: true,
-        underscored: true,
-        modelName: 'player',
+         underscored: true,
+         modelName: 'player',
     }
 
-)
-module.exports = Player;
+);
+
+ module.exports = Player;
+
