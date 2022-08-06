@@ -13,10 +13,11 @@ router.get("/", async (req, res) => {
         },
       ],
     });
-
+//zz - try games ?
     const game = gameData.get({ plain: true });
     res.render("homepage", {
       ...game,
+//zz - ...games, 
     });
   } catch (err) {
     res.status(500).json(err);

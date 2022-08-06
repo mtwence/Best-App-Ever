@@ -31,6 +31,7 @@ Game.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'Game',
+    //zz - try 'game' ?
   }
 );
 
