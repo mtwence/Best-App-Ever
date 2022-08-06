@@ -2,6 +2,8 @@ const seedGame2s = require('./game2-seeds');
 const seedTournament2s = require('./tournament2-seeds');
 const seedPlayer2s = require('./player2-seeds');
 const seedTournament2Player2 = require('./tournament2-player2-seeds');
+const { Player, Tournament, Game} = require('../models');
+const gameData = require('./gameData.json');
 
 const sequelize = require('../config/connection');
 
