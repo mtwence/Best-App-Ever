@@ -4,20 +4,15 @@ const withAuth = require("../utils/auth");
 
 
 // Michaels Codng Section:
-router.get("/", async (req, res) => {
+router.get("/games", async (req, res) => {
   try {
-    const gameData = await Game.findAll({
-      include: [
-        {
-          attributes: ["cover_art"],
-        },
-      ],
-    });
-//zz - try games ?
-    const game = gameData.get({ plain: true });
-    res.render("homepage", {
-      ...game,
-//zz - ...games, 
+
+    const gameData = await Game.findAll();
+    const games = gameData.map((games) =>
+    games.get({ plain: true }));
+    res.render("games", {
+      games,
+
     });
   } catch (err) {
     res.status(500).json(err);
