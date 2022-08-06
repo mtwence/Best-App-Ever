@@ -2,3 +2,8 @@
 node_modules/
 .env
 .vscode
+assets/images/
+.assets
+assets/
+/assets/images
+/images
