@@ -20,7 +20,14 @@ const seedAll = async () => {
   await seedTournament2Player2();
   console.log('\n----- Tournament2_Player2 SEEDED -----\n');
 
+  await Game.bulkCreate(gameData,{
+    individualHooks: true,
+    returning: true,
+  });
+
   process.exit(0);
 };
 
 seedAll();
+
+
