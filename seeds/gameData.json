@@ -2,24 +2,24 @@
     {
         "name": "Valorant",
         "description": "Tactical 5v5 hero shooter",
-        "cover_art": "../assets/images/Shooters/valorant.jpg",
+        "cover_art": "https://www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg",
         "game_type": "shooter"
     },
     {   "name": "Counter Strike: Global Offensive",
         "description": "Tactical 5v5 shooter",
-        "cover_art": "../assets/images/Shooters/csgo.jpg",
+        "cover_art": "https://www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg",
         "game_type": "shooter"
     },
     {
         "name": "Overwatch",
         "description": "Brawl 5v5 hero shooter",
-        "cover_art": "../assets/images/Shooters/overwatch.jpg",
+        "cover_art": "https://www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg",
         "game_type": "shooter"
     },
     {
         "name": "Rainbow Six Siege",
         "description": "Tactical 5v5 hero shooter",
-        "cover_art": "../assets/images/Shooters/rss.jpg",
+        "cover_art": "https://www.dogtime.com/assets/uploads/2018/10/puppies-cover.jpg",
         "game_type": "shooter"
     }
 
