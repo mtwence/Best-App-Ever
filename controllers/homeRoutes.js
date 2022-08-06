@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { Game } = require("../models");
-// const withAuth = require("../utils/auth");
+const { Game, Tournament, Player } = require("../models");
+const withAuth = require("../utils/auth");
 
 // Michaels Codng Section:
 router.get("/", async (req, res) => {
