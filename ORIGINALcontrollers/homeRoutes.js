@@ -14,9 +14,9 @@ router.get("/", async (req, res) => {
       ],
     });
 //zz - try games ?
-    const game = gameData.get({ plain: true });
+    const games = gameData.get({ plain: true });
     res.render("homepage", {
-      ...game,
+      ...games,
 //zz - ...games, 
     });
   } catch (err) {
@@ -139,12 +139,12 @@ router.get("/tournaments/", async (req, res) => {
   try {
     // Get all tournaments and JOIN with player data
     const tournamentData = await Tournament.findAll({
-      include: [
-        {
-          model: Player,
-          attributes: ["name"],
-        },
-      ],
+      // include: [
+        // {
+        //   model: Player,
+        //   attributes: ["name"],
+        // },
+      // ],
     });
 
     const tournaments = tournamentData.map((tournament) =>
