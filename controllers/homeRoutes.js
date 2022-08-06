@@ -165,7 +165,7 @@ router.get("/tournament2/:id", async (req, res) => {
       include: [
         {
           model: Player2,
-          attributes: ["name"],
+          attributes: ["player2_name"],
         },
       ],
     });
