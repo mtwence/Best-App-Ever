@@ -1,4 +1,4 @@
-<body>
+{{!-- <body>
 <header>
   <h1 class="mytitle">Lets Play</h1>
 </header>
@@ -21,6 +21,7 @@
          <button class="button is-info" id="loginbtn">Login</button>
          </div>
          </section>
+         <script src="/public/js/login.js"></script> --}}
 
           {{!-- <section class="columns">
     <div class="column is-one-quarter middle">
@@ -58,4 +59,22 @@
       --}}
 
   <!-- <script src="script.js"></script> -->
-  </body>
+  {{!-- </body> --}}
+
+<div class="container row">
+            <div class="jumbotron col-sm-4 pull-center">
+                <form action="/login" method="post">
+                    <div>
+                        <label>Username:</label>
+                        <input type="text" name="username"/>
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password"/>
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Log In"/>
+                    </div>
+                </form>                  
+            </div>          
+        </div>
