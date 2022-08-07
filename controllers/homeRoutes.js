@@ -167,6 +167,10 @@ router.get("/tournament2/:id", async (req, res) => {
           model: Player2,
           attributes: ["player2_name"],
         },
+        {
+          model: Game2,
+          attributes: ["cover_art"],
+        }
       ],
     });
 
@@ -191,6 +195,10 @@ router.get("/tournament2s/", async (req, res) => {
           model: Player2,
           attributes: ["player2_name"],
         },
+        {
+          model: Game2,
+          attributes: ["cover_art"],
+        }
       ],
     });
 

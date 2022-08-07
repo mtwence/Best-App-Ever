@@ -1,7 +1,40 @@
-<div class="text-center">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <img class="card-img-top" src="{{game2.cover_art}}" alt="game art" />
+    </div>
+    <div class="col-sm">
+      <div class="text-center">
+        <h2>{{tournament2_name}}</h2>
+
+        <p>{{description}}</p>
+
+        <p>Participants:</p>
+        {{#each player2s as |player2|}}
+          <p>{{player2.player2_name}}</p>
+        {{/each}}
+        <p>Created on {{format_date date_created}}</p>
+        <p>
+          <span for="img" aria-label="money">🎮</span>
+          Minimum
+          <!-- Pass needed_funding value to the helper function -->
+          <span>{{player_quantity}}</span>
+          players!
+        </p>
+        <p>
+          <button class="btn btn-primary">Join this tournament!</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+{{! original }}
+{{!-- <div class="text-center">
   <h2>{{tournament2_name}}</h2>
-  {{!-- <p>{{{get_emoji}}}</p> --}}
+  <img class="card-img-top" src="{{game2.cover_art}}" alt="game art">
   <p>{{description}}</p>
+
   <p>Participants:</p>
   {{#each player2s as |player2|}}
     <p>{{player2.player2_name}}</p>
@@ -17,4 +50,4 @@
   <p>
     <button class="btn btn-primary">Join this tournament!</button>
   </p>
-</div>
+</div> --}}
