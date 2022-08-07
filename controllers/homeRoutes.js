@@ -28,8 +28,7 @@ router.get('/games/:id/tournaments', async (req, res) => {
     const gameData = await Game2.findByPk(req.params.id, {
       include: [
         {
-          model: Tournament2,
-          attributes: ['tournament2_name'],
+          model: Tournament2
         },
       ],
     });
