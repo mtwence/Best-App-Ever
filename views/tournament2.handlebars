@@ -2,14 +2,16 @@
   <h2>{{tournament2_name}}</h2>
   {{!-- <p>{{{get_emoji}}}</p> --}}
   <p>{{description}}</p>
-  <p>Created by {{player2.player2_name}} on {{format_date date_created}}</p>
+  <p>Participants:</p>
+  {{#each player2s as |player2|}}
+    <p>{{player2.player2_name}}</p>
+  {{/each}}
+  <p>Created on {{format_date date_created}}</p>
   <p>
     <span for="img" aria-label="money">🎮</span>
-    Minimum<p> </p>
+    Minimum
     <!-- Pass needed_funding value to the helper function -->
-    <span class="dollar-amount">{{format_amount
-        tournament2.player_quantity
-      }}</span>
+    <span>{{player_quantity}}</span>
     players!
   </p>
   <p>
