@@ -2,8 +2,8 @@ const { Tournament2 } = require("../models");
 
 const tournament2Data = [
   {
-    tournament2_name: "Overwatch",
-    description: "Saturday 7/6.",
+    tournament2_name: "Overwatch practice tournament",
+    description: "This Saturday 8/13.",
     player_quantity: 16,
     game2_id: 3
   },

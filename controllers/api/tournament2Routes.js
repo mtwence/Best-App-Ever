@@ -65,7 +65,7 @@ router.post('/', (req, res) => {
   Tournament2.create(req.body)
     .then((tournament2) => {
       // if there's tournament2 player2s, we need to create pairings to bulk create in the Tournament2Player2 model
-      if (req.body.player2Ids.length) {
+      if (req.body.player2Ids) {
         const tournament2Player2IdArr = req.body.player2Ids.map((player2_id) => {
           return {
             tournament2_id: tournament2.id,
@@ -73,8 +73,7 @@ router.post('/', (req, res) => {
           };
         });
         return Tournament2Player2.bulkCreate(tournament2Player2IdArr);
-      }
-      // if no tournament2 player2s, just respond
+      } 
       res.status(200).json(tournament2);
     })
     .then((tournament2Player2Ids) => res.status(200).json(tournament2Player2Ids))
