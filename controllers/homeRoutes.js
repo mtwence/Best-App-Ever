@@ -181,7 +181,7 @@ router.get("/tournament2/:id", async (req, res) => {
 });
 
 //get all tournament2s
-router.get("/tournament2s/", async (req, res) => {
+router.get("/games/tournament2s/", async (req, res) => {
   try {
     // Get all tournament2s and JOIN with player data
     const tournament2Data = await Tournament2.findAll({
@@ -210,7 +210,7 @@ router.get("/tournament2s/", async (req, res) => {
   }
 });
 
-router.get("/newTournament2", async (req, res) => {
+router.get("/games/newTournament2", async (req, res) => {
   try {
     // Get all tournament2s and JOIN with player data
     const tournament2Data = await Tournament2.findAll({

@@ -25,6 +25,9 @@ Game2.init(
     game_type: {
       type: DataTypes.STRING,
     },
+    discord_link:{
+      type: DataTypes.STRING,
+    }
   },
   {
     sequelize,
