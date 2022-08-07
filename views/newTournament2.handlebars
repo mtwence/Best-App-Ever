@@ -11,16 +11,57 @@
     <form class="form new-tournament2-form">
       <div class="form-group">
         <label for="tournament2-name">Tournament name:</label>
-        <input class="form-input" type="text" id="tournament2-name" name="tournament2-name" />
+        <input
+          class="form-input"
+          type="text"
+          id="tournament2-name"
+          name="tournament2-name"
+        />
       </div>
       <div class="form-group">
-        <label for="tournament2-players">How many player do you want:</label>
-        <input class="form-input" type="number" id="tournament2-players" name="tournament2-players" />
+        <label for="tournament2-players">How many players:</label>
+        <input
+          class="form-input"
+          type="number"
+          id="tournament2-players"
+          name="tournament2-players"
+        />
       </div>
       <div class="form-group">
-        <label for="tournament2-desc">description:</label>
-        <textarea class="form-input" id="tournament2-desc" name="tournament2-desc"></textarea>
+        <label for="tournament2-desc">Brief decription:</label>
+        <textarea
+          class="form-input"
+          id="tournament2-desc"
+          name="tournament2-desc"
+        ></textarea>
       </div>
+     <div class="form-group col-md-4">
+      <label for="inputGame">Game:</label>
+      <select id="inputGame" class="form-control">
+        <option selected>Choose...</option>
+          <option value="1">Valorant</option>
+          <option value="2">Counter Strike: Global
+            Offensive</option>
+          <option value="3">Overwatch</option>
+          <option value="4">Rainbow Six Siege</option>
+          <option value="5">Mortal Kombat 11</option>
+          <option value="6">Marvel v Capcom 3</option>
+          <option value="7">Street Fighter 5</option>
+          <option value="8">Tekken 7</option>
+          <option value="9">League of Legends</option>
+          <option value="10">DOTA 2</option>
+          <option value="11">Heroes of the Storm</option>
+          <option value="12">Smite</option>
+          <option value="13">Among Us</option>
+          <option value="14">Gang Beasts</option>
+          <option value="15">Pummel Party</option>
+          <option value="16">Rocket League</option>
+          <option value="17">F1 22</option>
+          <option value="18">FIFA 22</option>
+          <option value="19">NBA 2k22</option>
+          <option value="20">PGA 2k21</option>
+      </select>
+    </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
@@ -28,21 +69,26 @@
   </div>
 
   {{#if tournament2s.length}}
-  <div class="col-md-6 tournament2-list">
-    <h3>Current Tournaments:</h3>
+    <div class="col-md-6 tournament2-list">
+      <h3>Current Tournaments:</h3>
 
-    {{#each tournament2s as |tournament2|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/tournament2/{{tournament2.id}}">{{tournament2.tournament2_name}}</a></h4>
-      </div>
-      <div class="col-md-4">
+      {{#each tournament2s as |tournament2|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a
+                href="/tournament2/{{tournament2.id}}"
+              >{{tournament2.tournament2_name}}</a></h4>
+          </div>
+          <div class="col-md-4">
 
-        <button class="btn btn-sm btn-danger" data-id="{{tournament2.id}}">DELETE</button>
-      </div>
+            <button
+              class="btn btn-sm btn-danger"
+              data-id="{{tournament2.id}}"
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
   {{/if}}
 </div>
 

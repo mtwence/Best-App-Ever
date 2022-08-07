@@ -104,54 +104,55 @@ router.get("/login", (req, res) => {
 
 //Member Zori's coding area
 
+//defunct routes
 // get specific tournament
 // URL should be /tournaments/games/game_id ?
-router.get("/tournament/:id", async (req, res) => {
-  try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: [
-        {
-          model: Player,
-          attributes: ["name"],
-        },
-      ],
-    });
+// router.get("/tournament/:id", async (req, res) => {
+//   try {
+//     const tournamentData = await Tournament.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Player,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
 
-    const tournament = tournamentData.get({ plain: true });
+//     const tournament = tournamentData.get({ plain: true });
 
-    res.render("tournament", {
-      ...tournament,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("tournament", {
+//       ...tournament,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 //get all tournaments
-router.get("/tournaments/", async (req, res) => {
-  try {
-    // Get all tournaments and JOIN with player data
-    const tournamentData = await Tournament.findAll({
-      // include: [
-      // {
-      //   model: Player,
-      //   attributes: ["name"],
-      // },
-      // ],
-    });
+// router.get("/tournaments/", async (req, res) => {
+//   try {
+//     // Get all tournaments and JOIN with player data
+//     const tournamentData = await Tournament.findAll({
+//       // include: [
+//       // {
+//       //   model: Player,
+//       //   attributes: ["name"],
+//       // },
+//       // ],
+//     });
 
-    const tournaments = tournamentData.map((tournament) =>
-      tournament.get({ plain: true })
-    );
+//     const tournaments = tournamentData.map((tournament) =>
+//       tournament.get({ plain: true })
+//     );
 
-    res.render("allTournaments", {
-      tournaments,
-      // logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("allTournaments", {
+//       tournaments,
+//       // logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // get specific tournament2
 // URL should be /tournament2s/games/game_id ?
@@ -210,7 +211,7 @@ router.get("/games/tournament2s/", async (req, res) => {
   }
 });
 
-router.get("/games/newTournament2", async (req, res) => {
+router.get("/newTournament2", async (req, res) => {
   try {
     // Get all tournament2s and JOIN with player data
     const tournament2Data = await Tournament2.findAll({
@@ -236,6 +237,8 @@ router.get("/games/newTournament2", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//-------------------------------------------------------------------------
 
 // Get all tournaments for specific game id 
 router.get("/games/:id/tournaments", async (req, res) => {
