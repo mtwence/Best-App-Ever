@@ -7,6 +7,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/72904-1.jpg",
     game_type: "shooter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Counter Strike: Global Offensive",
@@ -14,6 +15,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/10771-1.jpg",
     game_type: "shooter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Overwatch",
@@ -21,6 +23,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/32185-1.jpg",
     game_type: "shooter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Rainbow Six Siege",
@@ -28,6 +31,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/33336-1.jpg",
     game_type: "shooter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Mortal Kombat 11",
@@ -35,6 +39,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/62527-1.jpg",
     game_type: "fighter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Marvel v Capcom 3",
@@ -42,6 +47,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co1yej.png",
     game_type: "fighter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Street Fighter 5",
@@ -49,6 +55,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co1pka.png",
     game_type: "fighter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Tekken 7",
@@ -56,6 +63,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co1w4f.png",
     game_type: "fighter",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "League of Legends",
@@ -63,6 +71,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/928-1.jpg",
     game_type: "moba",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "DOTA 2",
@@ -70,6 +79,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co4bko.png",
     game_type: "moba",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Heroes of the Storm",
@@ -77,6 +87,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/48640-1.jpg",
     game_type: "moba",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Smite",
@@ -84,6 +95,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/65951-1.jpg",
     game_type: "moba",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Among Us",
@@ -91,6 +103,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/77267-1.jpg",
     game_type: "party",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Gang Beasts",
@@ -98,6 +111,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/29244-1.jpg",
     game_type: "party",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Pummel Party",
@@ -105,6 +119,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co20uq.png",
     game_type: "party",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "Rocket League",
@@ -112,6 +127,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/29478-1.jpg",
     game_type: "party",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "F1 22",
@@ -119,6 +135,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/99857-1.jpg",
     game_type: "sport",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "FIFA 22",
@@ -126,6 +143,7 @@ const game2Data = [
     cover_art:
       "https://images.igdb.com/igdb/image/upload/t_cover_big/co3dsm.png",
     game_type: "sport",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "NBA 2k22",
@@ -133,6 +151,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/99058-1.jpg",
     game_type: "sport",
+    discord_link: "https://discord.com/testlink"
   },
   {
     game2_name: "PGA 2k21",
@@ -140,6 +159,7 @@ const game2Data = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/94427-1.jpg",
     game_type: "sport",
+    discord_link: "https://discord.com/testlink"
   },
 ];
 
