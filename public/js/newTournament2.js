@@ -4,11 +4,13 @@ const newFormHandler = async (event) => {
   const tournament2_name = document.querySelector('#tournament2-name').value.trim();
   const tournament2_players = document.querySelector('#tournament2-players').value.trim();
   const description = document.querySelector('#tournament2-desc').value.trim();
+  const inputGame = document.getElementById('inputGame').value;
 
-  if (tournament2_name && tournament2_players && description) {
+  if (tournament2_name && tournament2_players && description && inputGame) {
+    console.log(inputGame);
     const response = await fetch(`/api/tournament2s`, {
       method: 'POST',
-      body: JSON.stringify({ tournament2_name: tournament2_name, player_quantity: tournament2_players, description: description }),
+      body: JSON.stringify({ tournament2_name: tournament2_name, player_quantity: tournament2_players, description: description, game2_id: inputGame}),
       headers: {
         'Content-Type': 'application/json',
       },
