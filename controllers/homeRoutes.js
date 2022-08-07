@@ -186,12 +186,12 @@ router.get("/tournament2s/", async (req, res) => {
   try {
     // Get all tournament2s and JOIN with player data
     const tournament2Data = await Tournament2.findAll({
-      // include: [
-        // {
-        //   model: Player2,
-        //   attributes: ["name"],
-        // },
-      // ],
+      include: [
+        {
+          model: Player2,
+          attributes: ["player2_name"],
+        },
+      ],
     });
 
     const tournament2s = tournament2Data.map((tournament2) =>
