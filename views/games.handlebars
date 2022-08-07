@@ -1,42 +1,51 @@
 <!-- Loop over each object in the games array -->
-{{#each games as |game| }}
-{{#if (eq game.game_type "shooter")}}
-<div class="row">
-<div class="card btn" style="width: 18rem;">
-  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
-</div>
-</div>
-{{else}}
-  {{#if (eq game.game_type "fighter")}}
-<div class="row">
-<div class="card btn" style="width: 18rem;">
-  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
-</div>
-</div>
-  {{else}}
-    {{#if (eq game.game_type "sport")}}
-<div class="row">
-<div class="card btn" style="width: 18rem;">
-  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
-</div>
-</div>
-       {{else}}
-          {{#if (eq game.game_type "moba")}}
-<div class="row">
-<div class="card btn" style="width: 18rem;">
-  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
-</div>
-</div>
-          {{else}}
-            {{#if (eq game.game_type "party")}}
-<div class="row">
-<div class="card btn" style="width: 18rem;">
-  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
-</div>
-</div>
-        {{/if}}
-      {{/if}}  
-    {{/if}}
+<Section class="row m-1">
+  <h2>Shooters</h2>
+  <div class="row">
+  {{#each games as |game| }}
+  {{#if (eq game.game_type "shooter")}}
+  {{> game-cards}}
   {{/if}}
-{{/if}}
-{{/each}}
+  {{/each}}
+</div>
+</Section>
+<Section class="row m-1">
+  <h2>Fighters</h2>
+  <div class="row ">
+  {{#each games as |game| }}
+  {{#if (eq game.game_type "fighter")}}
+  {{> game-cards}}
+  {{/if}}
+  {{/each}}
+</div>
+</Section>
+<Section class="row m-1">
+  <h2>Sports</h2>
+  <div class="row ">
+  {{#each games as |game| }}
+  {{#if (eq game.game_type "sport")}}
+  {{> game-cards}}
+  {{/if}}
+  {{/each}}
+</div>
+</Section>
+<Section class="row m-1">
+  <h2>MOBA</h2>
+  <div class="row ">
+  {{#each games as |game| }}
+  {{#if (eq game.game_type "moba")}}
+  {{> game-cards}}
+  {{/if}}
+  {{/each}}
+</div>
+</Section>
+<Section class="row m-1">
+  <h2>Party</h2>
+  <div class="row ">
+  {{#each games as |game| }}
+  {{#if (eq game.game_type "party")}}
+  {{> game-cards}}
+  {{/if}}
+  {{/each}}
+</div>
+</Section>
