@@ -6,11 +6,37 @@
   <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
 </div>
 </div>
-{{/if}}
 {{else}}
+  {{#if (eq game.game_type "fighter")}}
 <div class="row">
 <div class="card btn" style="width: 18rem;">
   <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
 </div>
 </div>
+  {{else}}
+    {{#if (eq game.game_type "sport")}}
+<div class="row">
+<div class="card btn" style="width: 18rem;">
+  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
+</div>
+</div>
+       {{else}}
+          {{#if (eq game.game_type "moba")}}
+<div class="row">
+<div class="card btn" style="width: 18rem;">
+  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
+</div>
+</div>
+          {{else}}
+            {{#if (eq game.game_type "party")}}
+<div class="row">
+<div class="card btn" style="width: 18rem;">
+  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
+</div>
+</div>
+        {{/if}}
+      {{/if}}  
+    {{/if}}
+  {{/if}}
+{{/if}}
 {{/each}}
