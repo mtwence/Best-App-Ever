@@ -19,6 +19,10 @@ Tournament2.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    player_quantity: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,10 +31,6 @@ Tournament2.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    },
-    player_quantity: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
     },
     game2_id: {
       type: DataTypes.INTEGER,

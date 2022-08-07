@@ -1,25 +1,40 @@
 <!-- Loop over each object in the tournament2s array -->
-{{#each tournament2s as |tournament2| }}
-<div class="row mb-4 tournament2">
-  <div class="col-md-5">
-    <h2>
-      {{!-- <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{{get_emoji}}} --}}
-      <a href="/tournament2/{{tournament2.id}}">{{tournament2.tournament2_name}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="money">🎮</span>
-      Minimum
-      <!-- Pass needed_funding value to the helper function -->
-      <span>{{tournament2.player_quantity}}</span>
-      players!
-    </p>
-    <p>Created by {{tournament2.user.name}} on {{format_date tournament2.date_created}}</p>
+{{#each tournament2s as |tournament2|}}
+  <div class="row mb-4 tournament2">
+    <div class="col-md-5">
+      <h2>
+        <a
+          href="/tournament2/{{tournament2.id}}"
+        >{{tournament2.tournament2_name}}</a>
+      </h2>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-6">
+            <img
+              class="card-img-top"
+              src="{{game2.cover_art}}"
+              alt="game art"
+            />
+          </div>
+          <div class="col-6">
+            <h3>
+              {{tournament2.description}}
+            </h3>
+            <p>
+              <span for="img" aria-label="money">🎮</span>
+              Minimum
+              <!-- Pass needed_funding value to the helper function -->
+              <span>{{tournament2.player_quantity}}</span>
+              players!
+            </p>
+            <p>Created by
+              {{tournament2.user.name}}
+              on
+              {{format_date tournament2.date_created}}</p>
+              
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-7">
-    <p>
-      {{tournament2.description}}
-    </p>
-  </div>
-</div>
 {{/each}}
