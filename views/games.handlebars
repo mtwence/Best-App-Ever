@@ -1,11 +1,12 @@
 <!-- Loop over each object in the games array -->
 {{#each games as |game| }}
-{{#matcher game.game_type "shooter"}}
+{{#if (eq game.game_type "shooter")}}
 <div class="row">
 <div class="card btn" style="width: 18rem;">
   <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
 </div>
 </div>
+{{/if}}
 {{else}}
 <div class="row">
 <div class="card btn" style="width: 18rem;">

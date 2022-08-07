@@ -19,7 +19,11 @@ module.exports = {
         return `<span for="img" aria-label="gear">⚙️</span>`;
       }
     },
-    matcher: (arg1, arg2, options) => {
-      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-    },
-  };
+    eq: (a, b, options) => {
+      if (arguments.length === 2) {
+        options = b;
+        b = options.hash.compare;
+      }
+      return util.value(a === b, this, options);
+  },
+};
