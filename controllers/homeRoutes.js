@@ -237,4 +237,33 @@ router.get("/games/newTournament2", async (req, res) => {
   }
 });
 
+// Get all tournaments for specific game id 
+router.get("/games/:id/tournaments", async (req, res) => {
+  try {
+    // Get all tournament2s and JOIN with player data
+    const tournament2Data = await Tournament2.findAll({
+      include: [
+        {
+          model: Player2,
+          attributes: ["player2_name"],
+        },
+        {
+          model: Game2,
+          attributes: ["cover_art"],
+        },
+      ],
+    });
+
+    const tournament2s = tournament2Data.map((tournament2) =>
+      tournament2.get({ plain: true })
+    );
+
+    res.render("allTournament2s", {
+      tournament2s,
+      // logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
