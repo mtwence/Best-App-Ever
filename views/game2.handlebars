@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <img class="card-img-top" src="{{cover_art}}" alt="game art" />
+    </div>
+    <div class="col-6">
+      <div class="text-center">
+        <h2>{{game2_name}}</h2>
+        <p>{{game_type}}</p>
+        <p>{{description}}</p>
+
+        <p>{{discord_link}}</p>
+
+        {{#if tournament2s}}
+          <p>Tournaments:</p>
+          {{#each tournament2s as |tournament2|}}
+            <h4><a
+                href="/tournament2/{{tournament2.id}}"
+              >{{tournament2.tournament2_name}}</a></h4>
+          {{/each}}
+        {{/if}}
+        {{!-- 
+        {{#if player2s}}
+          <p>Participants:</p>
+          {{#each player2s as |player2|}}
+            <p>{{player2.player2_name}}</p>
+          {{/each}}
+        {{/if}} --}}
+      </div>
+    </div>
+  </div>
+
+</div>

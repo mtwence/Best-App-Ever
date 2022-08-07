@@ -22,6 +22,30 @@ router.get("/games", async (req, res) => {
   }
 });
 
+//testing /games/:id----------------------------------------------------------------
+router.get('/games/:id/tournaments', async (req, res) => {
+  try {
+    const gameData = await Game2.findByPk(req.params.id, {
+      include: [
+        {
+          model: Tournament2,
+          attributes: ['tournament2_name'],
+        },
+      ],
+    });
+
+    const game = gameData.get({ plain: true });
+
+    res.render('game2', {
+      ...game,
+      // logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+//----------------------------------------------------------------
+
 //Member Genesis's coding area --------------------------- login ------------
 router.get("/", async (req, res) => {
   try {
@@ -182,7 +206,7 @@ router.get("/tournament2/:id", async (req, res) => {
 });
 
 //get all tournament2s
-router.get("/games/tournament2s/", async (req, res) => {
+router.get("/tournament2s/", async (req, res) => {
   try {
     // Get all tournament2s and JOIN with player data
     const tournament2Data = await Tournament2.findAll({
@@ -241,32 +265,32 @@ router.get("/newTournament2", async (req, res) => {
 //-------------------------------------------------------------------------
 
 // Get all tournaments for specific game id 
-router.get("/games/:id/tournaments", async (req, res) => {
-  try {
-    // Get all tournament2s and JOIN with player data
-    const tournament2Data = await Tournament2.findAll({
-      include: [
-        {
-          model: Player2,
-          attributes: ["player2_name"],
-        },
-        {
-          model: Game2,
-          attributes: ["cover_art"],
-        },
-      ],
-    });
+// router.get("/games/:id/tournaments", async (req, res) => {
+//   try {
+//     // Get all tournament2s and JOIN with player data
+//     const tournament2Data = await Tournament2.findAll({
+//       include: [
+//         {
+//           model: Player2,
+//           attributes: ["player2_name"],
+//         },
+//         {
+//           model: Game2,
+//           attributes: ["cover_art"],
+//         },
+//       ],
+//     });
 
-    const tournament2s = tournament2Data.map((tournament2) =>
-      tournament2.get({ plain: true })
-    );
+//     const tournament2s = tournament2Data.map((tournament2) =>
+//       tournament2.get({ plain: true })
+//     );
 
-    res.render("allTournament2s", {
-      tournament2s,
-      // logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("allTournament2s", {
+//       tournament2s,
+//       // logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 module.exports = router;
