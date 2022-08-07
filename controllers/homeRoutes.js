@@ -240,26 +240,24 @@ router.get("/newTournament2", async (req, res) => {
 // Get all tournaments for specific game id 
 router.get("/games/:id/tournaments", async (req, res) => {
   try {
-    // Get all tournament2s and JOIN with player data
-    const tournament2Data = await Tournament2.findAll({
-      include: [
-        {
-          model: Player2,
-          attributes: ["player2_name"],
-        },
-        {
-          model: Game2,
-          attributes: ["cover_art"],
-        },
-      ],
-    });
+    // Get all tournament2s for specific game
+    const gameTournaments = await Game2.findByPk(req.params.id,
+      {
+      include: ["tournaments"],
+      });
+      console.log(gameTournaments);
 
-    const tournament2s = tournament2Data.map((tournament2) =>
-      tournament2.get({ plain: true })
+      if (!gameTournaments) {
+        res.status(404).json({ message: 'No tournaments found with this game!' });
+        return;
+      };
+
+    const tournaments = gameTournaments.map((tournament) =>
+      tournament.get({ plain: true })
     );
-
+    
     res.render("allTournament2s", {
-      tournament2s,
+      tournaments,
       // logged_in: req.session.logged_in
     });
   } catch (err) {

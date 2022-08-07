@@ -47,16 +47,15 @@ const Game2 = require('./Game2');
 const Player2 = require('./Player2');
 const Tournament2Player2 = require('./Tournament2Player2');
 
-// Tournament2s belongsTo 
-Tournament2.belongsTo(Game2, { 
-  foreignKey: "game2_id" 
-});
+// Tournaments belong to one game
+Tournament2.belongsTo(Game2, 
+  {
+    foreignKey: "game2_id",
+    as: "games",
+  });
 
-// Categories have many Tournament2s
-Game2.hasMany(Tournament2, {
-  foreignKey: "game2_id",
-  // onDelete: "CASCADE",
-});
+// Games have many Tournament2s
+Game2.hasMany(Tournament2, {as: "tournaments"});
 
 // Tournament2s belongToMany Player2 (through Tournament2Tag)
 Tournament2.belongsToMany(Player2, {
