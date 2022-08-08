@@ -77,7 +77,6 @@
     margin-left: -5px;
   } */
 
-.navbar-item .image {
-  height: 100px;
-  width: 70px;
+body {
+  background-color: rgba(0, 0, 0, 0.316);
 }

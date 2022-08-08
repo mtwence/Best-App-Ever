@@ -1,3 +1,16 @@
+
+<!-- Loop over each object in the games array -->
+{{#each games as |game| }}
+{{#if (eq game.game_type "shooter")}}
+ <div class="row">
+<div class="card btn" style="width: 18rem;">
+  <img class="card-img-top" src="{{game.cover_art}}" alt="game art">
+</div>
+</div> 
+
+</section>
+{{else}}
+
 <!-- Loop over each object in the games array and add to rows based on game type-->
 <Section class="row m-1">
   <h2>Shooters</h2>
@@ -13,6 +26,7 @@
   <h2>Fighters</h2>
   <div class="row ">
   {{#each games as |game| }}
+
   {{#if (eq game.game_type "fighter")}}
   {{> game-cards}}
   {{/if}}
