@@ -10,45 +10,45 @@ const loginFormHandler = async (event) => {
       const response = await fetch('/api/players/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
+        // headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
         // If successful, redirect the browser to the profile page
-        document.location.replace('/'); //------ this will be home page
+        document.location.replace('/games'); //------ this will be home page
       } else {
         alert(response.statusText);
       }
     }
   };
-  document.querySelector('#logout').addEventListener('click', logout);
-//   const signupFormHandler = async (event) => {
-//     event.preventDefault();
   
-//     const name = document.querySelector('#name-signup').value.trim();
-//     const email = document.querySelector('#email-signup').value.trim();
-//     const password = document.querySelector('#password-signup').value.trim();
+  const signupFormHandler = async (event) => {
+    event.preventDefault();
   
-//     if (name && email && password) {
-//       const response = await fetch('/api/players', {
-//         method: 'POST',
-//         body: JSON.stringify({ name, email, password }),
-//         headers: { 'Content-Type': 'application/json' },
-//       });
+    const name = document.querySelector('#name-signup').value.trim();
+    const email = document.querySelector('#email-signup').value.trim();
+    const password = document.querySelector('#password-signup').value.trim();
   
-//       if (response.ok) {
-//         document.location.replace('/'); //---- Gamee will be home page-------------
-//       } else {
-//         alert(response.statusText);
-//       }
-//     }
-//   };
+    if (name && email && password) {
+      const response = await fetch('/api/games', {
+        method: 'POST',
+        body: JSON.stringify({ name, email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
   
-//   document
-//   .querySelector('.login-form')
-//   .addEventListener('submit', loginFormHandler);
+      if (response.ok) {
+        document.location.replace('/games'); //---- Gamee will be home page-------------
+      } else {
+        alert(response.statusText);
+      }
+    }
+  };
+  
+  document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
 
-// document
-//   .querySelector('.signup-form')
-//   .addEventListener('submit', signupFormHandler);
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
 
