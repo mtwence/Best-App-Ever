@@ -113,11 +113,13 @@ router.get('/', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+
+    res.redirect("/");
     return;
   }
 
-  res.render('/login');
+  res.render("login2");
+
 });
 
 //------------------------------------------------------------------------------------------
@@ -231,7 +233,7 @@ router.get("/tournaments/", async (req, res) => {
   }
 });
 
-router.get("/newTournament", async (req, res) => {
+router.get("/newTournament", withAuth, async (req, res) => {
   try {
     // Get all tournaments and JOIN with player data
     const tournamentData = await Tournament.findAll({
@@ -252,6 +254,7 @@ router.get("/newTournament", async (req, res) => {
     );
     res.render("newTournament", {
       tournaments,
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
