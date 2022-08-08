@@ -15,7 +15,54 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+
+// ----------------------------------------------------------------------------player login------- 
+
+router.post('/login', async (req, res) => {
+  try {
+    const playerData = await Player.findOne({ where: { email: req.body.email } });
+
+    if (!userData) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    const validPassword = await playerData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
+
+    req.session.save(() => {
+      req.session.user_id = playerData.id;
+      req.session.logged_in = true;
+      
+      res.json({ player: playerData, message: 'You are now logged in!' });
+    });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+
+// ----------------------------------------------------------------------
+
+router.get('/:id', async (req, res) => {
   // find a single player by its `id`
   try {
     const playerData = await Player.findByPk(req.params.id, {
