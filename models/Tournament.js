@@ -35,6 +35,9 @@ Tournament.init(
       type: DataTypes.DATE,
       // allowNull: false,
     },
+    host: {
+      type: DataTypes.INTEGER,
+    },
     game_id: {
       type: DataTypes.INTEGER,
       refereces: {

@@ -33,7 +33,7 @@ router.get('/games/:id/tournaments', async (req, res) => {
 
     const game = gameData.get({ plain: true });
 
-    res.render('game', {
+    res.render('all-tournaments', {
       ...game,
       logged_in: req.session.logged_in
     });
