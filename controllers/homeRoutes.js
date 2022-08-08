@@ -42,11 +42,11 @@ router.get('/games/:id/tournaments', async (req, res) => {
 });
 //----------------------------------------------------------------
 
-//-----------------Member Genesis's coding area --------------------------- login ------------
-router.get('/', async (req, res) => {
+//Member Genesis's coding area --------------------------- login ------------
+router.get("/", async (req, res) => {
   try {
     // Get all projects and JOIN with user data
-    const playerData = await Game.findAll({
+    const playerData = await player.findAll({
       include: [
         {
           model: User,
@@ -68,9 +68,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get("/games/:id", async (req, res) => {
+router.get("/player/:id", async (req, res) => {
   try {
-    const playerData = await Player.findByPk(req.params.id, {
+    const playerData = await player.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -79,10 +79,10 @@ router.get("/games/:id", async (req, res) => {
       ],
     });
 
-    const game = gameData.get({ plain: true });
+    const player = playerData.get({ plain: true });
 
-    res.render('games', {
-      ...games,
+    res.render("homepage", {
+      ...player,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
@@ -91,18 +91,18 @@ router.get("/games/:id", async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/', withAuth, async (req, res) => {
+router.get("/models/Game.js", withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const playerData = await Player.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: games }],
+    const gameData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: player }],
     });
 
     const game = gameData.get({ plain: true });
 
-    res.render('/', {
-      ...player,
+    res.render("homepage", {
+      ...user,
       logged_in: true,
     });
   } catch (err) {
@@ -110,14 +110,14 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect("/models/Game.js");
     return;
   }
 
-  res.render('/login');
+  res.render("login");
 });
 
 //------------------------------------------------------------------------------------------

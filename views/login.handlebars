@@ -2,51 +2,61 @@
 <header>
   <h1 class="mytitle">Have an account Login or Signup:</h1>
 </header>
-
-<section class="login">
+<section class="form login-form">
   <section class="columns">
     <div class="column is-one-quarter middle">
       <div class="box">
         <h2 class="title is-4">Login</h2>
         <div class="field">
-          <form class="login-form">
           <label for="email-login">Email</label>
-          
-          <input id="email-login" class="form-input" type="text">
+          <div class="control">
+          </div>
+          <input id="email-login" class="input" type="text" placeholder="Username">
         </div>
         <div class="field">
           <label for="password-login">Password</label>
-         
+          <div class="control">
+          </div>
           <input id="password-login" class="input" type="password" placeholder="Password">
         {{!-- </div>
          <button class="button is-info" id="loginbtn" type="submit">Login</button>
          </div> --}}
-         <div class="form-group">
+         {{!-- <div class="form-group">
         <button class="btn btn-primary" type="submit">login</button>
-      </div>
-        </form>
-      </section>
- <section class="signup">
+      </div> --}}
+       <a href="/games" target="_parent"><button class="button is-info" id="signupbtn">Login</button></a>
+</section>
+        
+        
+ <section class="form signup-form">
          <section class="columns">
     <div class="column is-one-quarter middle">
       <div class="box">
         <h2 class="title is-4">Signup</h2>
-        <form class="form signup-form">
-        <div class="form-group">
-          <label for="name-signup">name:</label>
+        <div class="field">
+          <label class="label" for="email-signup">Email</label>
           <div class="control">
-          
-          <input class="form-input" type="text" id="name-signup" />
+          </div>
+          <input id="firstname" class="input" type="text" placeholder="First name">
         </div>
-        <div class="form-group">
-         <label for="email-signup">email</label>
-          
-          <input class="form-input" type="text" id="email-signup" />
+        <div class="field">
+         <label class="label" for="name-signup">Last Name</label>
+          <div class="control">
+          </div>
+          <input id="lastname" class="input" type="text" placeholder="Last name">
         </div>
-        <div class="form-group">
-          <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-
+        <div class="field">
+          <label class="label" for="username-signup">Username</label>
+          <div class="control">
+          </div>
+          <input id="username2" class="input" type="text" placeholder="Username">
+        </div>
+        <div class="field">
+          <label class="label" for="password-signup">Password</label>
+          <div class="control">
+          </div>
+          <input id="password2" class="input" type="password" placeholder="Password">
+        </div>
         
 
         {{!-- <a href="/games">Sign up</a>  --}}
@@ -57,8 +67,8 @@
       </div>
       </div>
     </div>
-  </section> 
-  
+
+  </section>
       
 <script src="./js/login.js"></script>
   
