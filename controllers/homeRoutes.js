@@ -184,7 +184,7 @@ router.get("/tournaments/", async (req, res) => {
       tournament.get({ plain: true })
     );
 
-    res.render("allTournaments", {
+    res.render("all-tournaments", {
       tournaments,
       logged_in: req.session.logged_in
     });
