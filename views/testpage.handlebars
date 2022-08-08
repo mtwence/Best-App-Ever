@@ -8,5 +8,11 @@
         >{{tournament.tournament_name}}</a>
       </h2>
     </div>
+    <div class="col-md-5">
+      <p>Participants:</p>
+      {{#each players as |player|}}
+        <p>{{player.player_name}}</p>
+      {{/each}}
+    </div>
   </div>
 {{/each}}
