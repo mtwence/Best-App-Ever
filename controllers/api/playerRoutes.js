@@ -69,7 +69,7 @@ router.put('/:id', async (req, res) => {
       // get list of current player_ids
       const playerProdIds = playerTournaments.map(({ tournament_id }) => tournament_id);
       // create filtered list of new player_ids
-      const newTournamentPlayers = req.body.tournament2Ids
+      const newTournamentPlayers = req.body.tournamentIds
         .filter((tournament_id) => !playerProdIds.includes(tournament_id))
         .map((tournament_id) => {
           return {
