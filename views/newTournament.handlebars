@@ -7,7 +7,7 @@
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Create a New Tournament:</h3>
-    <form class="form new-tournament2-form">
+    <form class="form new-tournament-form">
       <div class="row">
         <div class="form-group col-md-4">
           <label for="inputGame">Game:</label>
@@ -38,33 +38,33 @@
       </div>
       <div class="row justify-content-around">
         <div class="form-group">
-          <label for="tournament2-name">Tournament name:</label>
+          <label for="tournament-name">Tournament name:</label>
           <input
             class="form-input"
             type="text"
-            id="tournament2-name"
-            name="tournament2-name"
+            id="tournament-name"
+            name="tournament-name"
           />
         </div>
       </div>
       <div class="row justify-content-around">
         <div class="form-group">
-          <label for="tournament2-players">How many players:</label>
+          <label for="tournament-players">How many players:</label>
           <input
             class="form-input"
             type="number"
-            id="tournament2-players"
-            name="tournament2-players"
+            id="tournament-players"
+            name="tournament-players"
           />
         </div>
       </div>
       <div class="row justify-content-around">
         <div class="form-group">
-          <label for="tournament2-desc">Brief decription:</label>
+          <label for="tournament-desc">Brief decription:</label>
           <textarea
             class="form-input"
-            id="tournament2-desc"
-            name="tournament2-desc"
+            id="tournament-desc"
+            name="tournament-desc"
           ></textarea>
         </div>
       </div>
@@ -76,22 +76,22 @@
     </form>
   </div>
 
-  {{#if tournament2s.length}}
-    <div class="col-md-6 tournament2-list">
+  {{#if tournaments.length}}
+    <div class="col-md-6 tournament-list">
       <h3>Current Tournaments:</h3>
 
-      {{#each tournament2s as |tournament2|}}
+      {{#each tournaments as |tournament|}}
         <div class="row mb-2">
           <div class="col-md-8">
             <h4><a
-                href="/tournaments2/{{tournament2.id}}"
-              >{{tournament2.tournament2_name}}</a></h4>
+                href="/tournament/{{tournament.id}}"
+              >{{tournament.tournament_name}}</a></h4>
           </div>
           <div class="col-md-4">
 
             <button
               class="btn btn-sm btn-danger"
-              data-id="{{tournament2.id}}"
+              data-id="{{tournament.id}}"
             >DELETE</button>
           </div>
         </div>

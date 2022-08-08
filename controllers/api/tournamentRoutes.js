@@ -6,7 +6,7 @@ const { Tournament, Game, Player, TournamentPlayer } = require('../../models');
 
 
 
-//http://localhost:3003/api/tournament2s
+//http://localhost:3003/api/tournaments
 
 // get all tournaments
 router.get('/', async (req, res) => {
@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
 //http://localhost:3003/api/tournaments
 
 // {
-//   "tournament2_name": "SW Battlefront",
+//   "tournament_name": "SW Battlefront",
 //   "description": "fun game.",
 //   "player_quantity": 66
 // }
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', (req, res) => {
   /* req.body should look like this...
     {
-      tournament2_name: "Basketball",
+      tournament_name: "Basketball",
       price: 200.00,
       stock: 3,
       player2Ids: [1, 2, 3, 4]
