@@ -22,6 +22,29 @@ router.get("/games", async (req, res) => {
   }
 });
 
+//testing /games/:id----------------------------------------------------------------
+router.get('/games/:id/tournaments', async (req, res) => {
+  try {
+    const gameData = await Game2.findByPk(req.params.id, {
+      include: [
+        {
+          model: Tournament2
+        },
+      ],
+    });
+
+    const game = gameData.get({ plain: true });
+
+    res.render('game2', {
+      ...game,
+      // logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+//----------------------------------------------------------------
+
 //Member Genesis's coding area --------------------------- login ------------
 router.get("/", async (req, res) => {
   try {
@@ -104,54 +127,55 @@ router.get("/login", (req, res) => {
 
 //Member Zori's coding area
 
+//defunct routes
 // get specific tournament
 // URL should be /tournaments/games/game_id ?
-router.get("/tournament/:id", async (req, res) => {
-  try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: [
-        {
-          model: Player,
-          attributes: ["name"],
-        },
-      ],
-    });
+// router.get("/tournament/:id", async (req, res) => {
+//   try {
+//     const tournamentData = await Tournament.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Player,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
 
-    const tournament = tournamentData.get({ plain: true });
+//     const tournament = tournamentData.get({ plain: true });
 
-    res.render("tournament", {
-      ...tournament,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("tournament", {
+//       ...tournament,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 //get all tournaments
-router.get("/tournaments/", async (req, res) => {
-  try {
-    // Get all tournaments and JOIN with player data
-    const tournamentData = await Tournament.findAll({
-      // include: [
-      // {
-      //   model: Player,
-      //   attributes: ["name"],
-      // },
-      // ],
-    });
+// router.get("/tournaments/", async (req, res) => {
+//   try {
+//     // Get all tournaments and JOIN with player data
+//     const tournamentData = await Tournament.findAll({
+//       // include: [
+//       // {
+//       //   model: Player,
+//       //   attributes: ["name"],
+//       // },
+//       // ],
+//     });
 
-    const tournaments = tournamentData.map((tournament) =>
-      tournament.get({ plain: true })
-    );
+//     const tournaments = tournamentData.map((tournament) =>
+//       tournament.get({ plain: true })
+//     );
 
-    res.render("allTournaments", {
-      tournaments,
-      // logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render("allTournaments", {
+//       tournaments,
+//       // logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // get specific tournament2
 // URL should be /tournament2s/games/game_id ?
@@ -237,4 +261,35 @@ router.get("/newTournament2", async (req, res) => {
   }
 });
 
+//-------------------------------------------------------------------------
+
+// Get all tournaments for specific game id 
+// router.get("/games/:id/tournaments", async (req, res) => {
+//   try {
+//     // Get all tournament2s and JOIN with player data
+//     const tournament2Data = await Tournament2.findAll({
+//       include: [
+//         {
+//           model: Player2,
+//           attributes: ["player2_name"],
+//         },
+//         {
+//           model: Game2,
+//           attributes: ["cover_art"],
+//         },
+//       ],
+//     });
+
+//     const tournament2s = tournament2Data.map((tournament2) =>
+//       tournament2.get({ plain: true })
+//     );
+
+//     res.render("allTournament2s", {
+//       tournament2s,
+//       // logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 module.exports = router;
