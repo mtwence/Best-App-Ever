@@ -1,11 +1,11 @@
-<!-- Loop over each object in the players array -->
-{{#each players as |player|}}
-  <div class="row mb-4 player">
+<!-- Loop over each object in the tournaments array -->
+{{#each tournaments as |tournament|}}
+  <div class="row mb-4 tournament">
     <div class="col-md-5">
       <h2>
         <a
-          href="/player/{{player.id}}"
-        >{{player.player_name}}</a>
+          href="/tournament/{{tournament.id}}"
+        >{{tournament.tournament_name}}</a>
       </h2>
     </div>
   </div>

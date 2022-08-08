@@ -72,21 +72,21 @@ router.get('/games/:id/tournaments', async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     // Get all players and JOIN with tournament data
-    const playerData = await Player.findAll({
+    const tournamentData = await Tournament.findAll({
       include: [
         {
-          model: Tournament,
-          attributes: ["tournament_name"],
+          model: Player,
+          attributes: ["player_name"],
         },
       ],
     });
 
     // Serialize data so the template can read it
-    const players = playerData.map((player) => player.get({ plain: true }));
+    const tournaments = tournamentData.map((tournament) => tournament.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render("testpage", {
-      players,
+      tournaments,
       // logged_in: req.session.logged_in,
     });
   } catch (err) {
