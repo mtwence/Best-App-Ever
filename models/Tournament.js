@@ -33,7 +33,7 @@ Tournament.init(
     },
     event_time:{
       type: DataTypes.DATE,
-      allowNull: false,
+      // allowNull: false,
     },
     game_id: {
       type: DataTypes.INTEGER,
