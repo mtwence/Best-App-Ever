@@ -10,7 +10,7 @@ const newFormHandler = async (event) => {
     console.log(inputGame);
     const response = await fetch(`/api/tournaments`, {
       method: 'POST',
-      body: JSON.stringify({ tournament_name: tournament_name, player_quantity: tournament_players, description: description, game2_id: inputGame}),
+      body: JSON.stringify({ tournament_name: tournament_name, player_quantity: tournament_players, description: description, game_id: inputGame}),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -28,7 +28,7 @@ const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/tournament/${id}`, {
+    const response = await fetch(`/api/tournaments/${id}`, {
       method: 'DELETE',
     });
 
