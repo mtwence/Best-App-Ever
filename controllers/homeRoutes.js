@@ -43,31 +43,57 @@ router.get('/games/:id/tournaments', async (req, res) => {
 //----------------------------------------------------------------
 
 //Member Genesis's coding area --------------------------- login ------------
+// router.get("/", async (req, res) => {
+//   try {
+//     // Get all projects and JOIN with user data
+//     const playerData = await player.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["name"],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const player = playerData.map((player) => player.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.render("homepage", {
+//       player,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+//zztesting-----------------------------------------------------------------------------
 router.get("/", async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const playerData = await player.findAll({
+    // Get all players and JOIN with tournament data
+    const playerData = await Player.findAll({
       include: [
         {
-          model: User,
-          attributes: ["name"],
+          model: Tournament,
+          attributes: ["tournament_name"],
         },
       ],
     });
 
     // Serialize data so the template can read it
-    const player = playerData.map((player) => player.get({ plain: true }));
+    const players = playerData.map((player) => player.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render("homepage", {
-      player,
-      logged_in: req.session.logged_in,
+    res.render("testpage", {
+      players,
+      // logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
+//--------------------------------------------------------------------------------
 router.get("/player/:id", async (req, res) => {
   try {
     const playerData = await player.findByPk(req.params.id, {
