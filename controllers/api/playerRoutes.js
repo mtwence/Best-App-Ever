@@ -33,30 +33,8 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const playerData = await Player.create(req.body)
-      .then((player) => {
-        // if there are tournament players, we need to create pairings to bulk create in the TournamentPlayer model
-        if (req.body.tournamentIds) {
-          if (req.body.tournamentIds.length) {
-            const tournamentIdArr = req.body.tournamentIds.map(
-              (tournament_id) => {
-                return {
-                  player_id: player.id,
-                  tournament_id,
-                };
-              }
-            );
-            return TournamentPlayer.bulkCreate(tournamentIdArr);
-          }
-        }
-        // if no tournament players, just respond
-        res.status(200).json(player);
-      })
-      .then((data) => res.status(200).json(data))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
+    const playerData = await Player.create(req.body);
+    const data = playerData.get({ plain: true });
 
     req.session.save(() => {
       req.session.player_id = playerData.id;
@@ -83,11 +61,9 @@ router.post("/login", async (req, res) => {
     const validPassword = await playerData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({
-          message: req.body.password + " Incorrect password, please try again",
-        });
+      res.status(400).json({
+        message: req.body.password + " Incorrect password, please try again",
+      });
       return;
     }
 
