@@ -28,18 +28,19 @@
       <div class="navbar-item">
         <div class="buttons">
           <a href="/" target="_parent"><button class="button is-info" id="homebtn">Home🎮 🎮 🎮</button></a>
-           <a href="/login" target="_parent"><button class="button is-info" id="signupbtn">Login👾 👾 👾</button></a>
-        </div>
-      </div>
-    </div>
-      <nav>
-        <!-- Conditionally render login or logout links -->
+                   <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         {{!-- <a href="/games">Games</a>  --}}
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        {{!-- <a href="/games">Games</a> --}}
+           <a href="/login" target="_parent"><button class="button is-info" id="signupbtn">Login👾 👾 👾</button></a>
         {{/if}} 
+        </div>
+      </div>
+    </div>
+      <nav>
+
+
       </nav>
     </header>
     <main class="container container-fluid mt-5">
