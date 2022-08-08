@@ -17,7 +17,7 @@ const newFormHandler = async (event) => {
     });
     console.log(response)
     if (response.ok) {
-      document.location.replace('/newTournament');
+      document.location.replace('/tournaments');
     } else {
       alert('Failed to create tournament');
     }
@@ -33,7 +33,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/newTournament');
+      document.location.replace('/tournaments');
     } else {
       alert('Failed to delete tournament');
     }
