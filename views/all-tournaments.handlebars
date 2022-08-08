@@ -1,0 +1,28 @@
+
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-12">
+        <div class="tile">
+            <div class="tile is-parent is-6">
+                <article class="tile is-child">
+                    {{> new-tournament}}
+                </article>
+            </div>
+            <div class="tile is-parent is-6">
+                <article class="tile is-child">
+                    <figure class="image is-4by3">
+                        <img src="{{cover_art}}">
+                    </figure>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-parent is-12">
+            <article class="tile is-child">
+                <h2>Avaliable Tournaments</h2>
+                {{#each tournaments as |tournament| }}
+                <div class="content">
+                    {{> tournament-cards}}
+                </div>
+                {{/each}}
+            </article>
+        </div>
+    </div>

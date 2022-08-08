@@ -1,11 +1,5 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-md-6">
+<div class="card">
+  <div class="column is-full">
     <h3>Create a New Tournament:</h3>
     <form class="form new-tournament-form">
       <div class="row">
@@ -36,68 +30,30 @@
           </select>
         </div>
       </div>
-      <div class="row justify-content-around">
+      <div class="column is-full">
         <div class="form-group">
           <label for="tournament-name">Tournament name:</label>
-          <input
-            class="form-input"
-            type="text"
-            id="tournament-name"
-            name="tournament-name"
-          />
+          <input class="form-input" type="text" id="tournament-name" name="tournament-name" />
         </div>
       </div>
-      <div class="row justify-content-around">
+      <div class="column is-full">
         <div class="form-group">
           <label for="tournament-players">How many players:</label>
-          <input
-            class="form-input"
-            type="number"
-            id="tournament-players"
-            name="tournament-players"
-          />
+          <input class="form-input" type="number" id="tournament-players" name="tournament-players" />
         </div>
       </div>
-      <div class="row justify-content-around">
+      <div class="column is-full">
         <div class="form-group">
           <label for="tournament-desc">Brief decription:</label>
-          <textarea
-            class="form-input"
-            id="tournament-desc"
-            name="tournament-desc"
-          ></textarea>
+          <textarea class="form-input" id="tournament-desc" name="tournament-desc"></textarea>
         </div>
       </div>
-      <div class="row justify-content-center">
+      <div class="column is-full">
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Create</button>
         </div>
       </div>
     </form>
   </div>
-
-  {{#if tournaments.length}}
-    <div class="col-md-6 tournament-list">
-      <h3>Current Tournaments:</h3>
-
-      {{#each tournaments as |tournament|}}
-        <div class="row mb-2">
-          <div class="col-md-8">
-            <h4><a
-                href="/tournament/{{tournament.id}}"
-              >{{tournament.tournament_name}}</a></h4>
-          </div>
-          <div class="col-md-4">
-
-            <button
-              class="btn btn-sm btn-danger"
-              data-id="{{tournament.id}}"
-            >DELETE</button>
-          </div>
-        </div>
-      {{/each}}
-    </div>
-  {{/if}}
 </div>
-
-<script src="./js/newTournament2.js"></script>
+  <script src="./js/newTournament2.js"></script>

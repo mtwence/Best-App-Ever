@@ -1,0 +1,20 @@
+<div class="column is-full m-1 tournament">
+  <div >
+    <h2>
+      <a href="/tournament/{{id}}">{{tournament_name}}</a>
+    </h2>
+    <p>
+      <span for="img" aria-label="money">🎮</span>
+      Minimum<p> </p>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="dollar-amount">{{player_quantity}}</span>
+      players!
+    </p>
+    <p>Created by {{host}} on {{date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{description}}
+    </p>
+  </div>
+</div>
