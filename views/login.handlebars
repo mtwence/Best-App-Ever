@@ -1,80 +1,70 @@
-{{!-- <body>
+ <body>
 <header>
-  <h1 class="mytitle">Lets Play</h1>
+  <h1 class="mytitle">Have an account Login or Signup:</h1>
 </header>
+<form class="form login-form">
   <section class="columns">
     <div class="column is-one-quarter middle">
       <div class="box">
         <h2 class="title is-4">Login</h2>
         <div class="field">
-          <label class="label">Email</label>
+          <label for="email-login">Email</label>
           <div class="control">
           </div>
-          <input id="username" class="input" type="text" placeholder="Username">
+          <input id="email-login" class="input" type="text" placeholder="Username">
         </div>
         <div class="field">
-          <label id="password" class="label">Password</label>
+          <label for="password-login">Password</label>
           <div class="control">
           </div>
-          <input class="input" type="text" placeholder="Password">
+          <input id="password-login" class="input" type="password" placeholder="Password">
         </div>
-         <button class="button is-info" id="loginbtn">Login</button>
+         <button class="button is-info" id="loginbtn" type="submit">Login</button>
          </div>
          </section>
-         <script src="/public/js/login.js"></script> --}}
-
-          {{!-- <section class="columns">
+        </form>
+ <form class="form signup-form">
+         <section class="columns">
     <div class="column is-one-quarter middle">
       <div class="box">
-        <h2 class="title is-4">Login</h2>
+        <h2 class="title is-4">Signup</h2>
         <div class="field">
-          <label class="label">Email</label>
+          <label class="label" for="email-signup">Email</label>
           <div class="control">
           </div>
           <input id="firstname" class="input" type="text" placeholder="First name">
         </div>
         <div class="field">
-         <label class="label">Last Name</label>
+         <label class="label" for="name-signup">Last Name</label>
           <div class="control">
           </div>
           <input id="lastname" class="input" type="text" placeholder="Last name">
         </div>
         <div class="field">
-          <label class="label">Username</label>
+          <label class="label" for="username-signup">Username</label>
           <div class="control">
           </div>
           <input id="username2" class="input" type="text" placeholder="Username">
         </div>
         <div class="field">
-          <label class="label">Password</label>
+          <label class="label" for="password-signup">Password</label>
           <div class="control">
           </div>
-          <input id="password2" class="input" type="text" placeholder="Password">
+          <input id="password2" class="input" type="password" placeholder="Password">
         </div>
-       
-        <button class="button is-info" id="signupbtn">Sign Up</button>
+        
+        {{!-- <a href="/games">Sign up</a>  --}}
+        <button class="button is-info" type="submit" >Sign Up</button>
+        {{!-- <a href="/games" target="_parent"><button class="button is-info" id="signupbtn">Sign Up</button></a> --}}
+      </form>
+      </div>
       </div>
     </div>
   </section> 
-      --}}
+  
+      
+<script src="./js/login.js"></script>
+  
+   </body> 
 
-  <!-- <script src="script.js"></script> -->
-  {{!-- </body> --}}
-
-<div class="container row">
-            <div class="jumbotron col-sm-4 pull-center">
-                <form action="/login" method="post">
-                    <div>
-                        <label>Username:</label>
-                        <input type="text" name="username"/>
-                    </div>
-                    <div>
-                        <label>Password:</label>
-                        <input type="password" name="password"/>
-                    </div>
-                    <div>
-                        <input class="btn btn-primary" type="submit" value="Log In"/>
-                    </div>
-                </form>                  
-            </div>          
-        </div>
+ 
