@@ -6,7 +6,6 @@ const sequelize = require('../config/connection');
 // Initialize Tournament2 model (table) by extending off Sequelize's Model class
 class Tournament extends Model {}
 
-// set up fields and rules for Tournament2 model
 Tournament.init(
   {
     id: {
@@ -31,6 +30,10 @@ Tournament.init(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+    },
+    event_time:{
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     game_id: {
       type: DataTypes.INTEGER,

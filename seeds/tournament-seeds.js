@@ -8,15 +8,39 @@ const tournamentData = [
     game_id: 3
   },
   {
-    tournament_name: "Valorant Ranked",
-    description: "going for diamond rank",
+    tournament_name: "Diamond Boys",
+    description: "Going for diamond",
     player_quantity: 5,
     game_id: 1
   },
   {
-    tournament_name: "CS:GO",
+    tournament_name: "5v5 Custom",
+    description: "For funzies",
+    player_quantity: 10,
+    game_id: 1
+  },
+  {
+    tournament_name: "Road to Radiant",
+    description: "We HAWTTTTT",
+    player_quantity: 5,
+    game_id: 1
+  },
+  {
+    tournament_name: "Nova Boys need 2",
     description: "Playing ranked and pubs",
-    player_quantity: 3,
+    player_quantity: 2,
+    game_id: 2
+  },
+  {
+    tournament_name: "Road to Global",
+    description: "Assembling a team of noob stompers",
+    player_quantity: 5,
+    game_id: 2
+  },
+  {
+    tournament_name: "Fragadelphia",
+    description: "10 teams in Philly area compete",
+    player_quantity:50 ,
     game_id: 2
   },
 ];
