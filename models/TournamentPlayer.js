@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class Tournament2Player2 extends Model {}
+class TournamentPlayer extends Model {}
 
-Tournament2Player2.init(
+TournamentPlayer.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,17 +12,17 @@ Tournament2Player2.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    tournament2_id: {
+    tournament_id: {
       type: DataTypes.INTEGER,
       refereces: {
-        model: "tournament2",
+        model: "tournament",
         key: "id",
       },
     },
-    player2_id: {
+    player_id: {
       type: DataTypes.INTEGER,
       refereces: {
-        model: "player2",
+        model: "player",
         key: "id",
       },
     },
@@ -32,8 +32,8 @@ Tournament2Player2.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'tournament2_player2',
+    modelName: 'tournament_player',
   }
 );
 
-module.exports = Tournament2Player2;
+module.exports = TournamentPlayer;

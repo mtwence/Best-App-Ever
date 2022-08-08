@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+
+const sequelize = require('../config/connection.js');
 
 class Game extends Model {}
 
@@ -7,11 +8,11 @@ Game.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+      allowNull: false,
     },
-    name: {
+    game_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -31,7 +32,6 @@ Game.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'game',
-    //zz - try 'game' ?
   }
 );
 

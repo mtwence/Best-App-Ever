@@ -5,26 +5,24 @@
     </div>
     <div class="col-6">
       <div class="text-center">
-        <h2>{{game2_name}}</h2>
+        <h2>{{game_name}}</h2>
         <p>{{game_type}}</p>
         <p>{{description}}</p>
 
-        <p>{{discord_link}}</p>
-
-        {{#if tournament2s}}
-          {{#each tournament2s as |tournament2|}}
-            <div class="row mb-4 tournament2">
+        {{#if tournaments}}
+          {{#each tournaments as |tournament|}}
+            <div class="row mb-4 tournament">
               <div class="col-md-5">
                 <h2>
                   <a
-                    href="/tournament2/{{tournament2.id}}"
-                  >{{tournament2.tournament2_name}}</a>
+                    href="/tournament/{{tournament.id}}"
+                  >{{tournament.tournament_name}}</a>
                 </h2>
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-6">
                       <h3>
-                        {{tournament2.description}}
+                        {{tournament.description}}
                       </h3>
                     </div>
                   </div>
@@ -34,10 +32,10 @@
           {{/each}}
         {{/if}}
         {{!-- 
-        {{#if player2s}}
+        {{#if players}}
           <p>Participants:</p>
-          {{#each player2s as |player2|}}
-            <p>{{player2.player2_name}}</p>
+          {{#each players as |player|}}
+            <p>{{player.player_name}}</p>
           {{/each}}
         {{/if}} --}}
       </div>

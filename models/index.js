@@ -1,17 +1,4 @@
-const Player = require("./Player");
-const Tournament = require("./Tournament");
-const Game = require("./Game");
 
-
-//from miniproject
-Player.hasMany(Tournament,{
-  foreignKey: 'player_id',
-  onDelete: 'CASCADE'
-});
-
-Tournament.belongsTo(Player, {
-  foreignKey: 'host_id',
-})
 
 //many to many relations  
 // Player.belongsToMany(Tournament, {
@@ -42,32 +29,32 @@ Tournament.belongsTo(Player, {
 //member Zori's coding section -----------------------------------------------
 
 
-const Tournament2 = require('./Tournament2');
-const Game2 = require('./Game2');
-const Player2 = require('./Player2');
-const Tournament2Player2 = require('./Tournament2Player2');
+const Tournament = require('./Tournament');
+const Game = require('./Game');
+const Player = require('./Player');
+const TournamentPlayer = require('./TournamentPlayer');
 
 // Tournament2s belongsTo 
-Tournament2.belongsTo(Game2, { 
-  foreignKey: "game2_id" 
+Tournament.belongsTo(Game, { 
+  foreignKey: "game_id" 
 });
 
 // Categories have many Tournament2s
-Game2.hasMany(Tournament2, {
-  foreignKey: "game2_id",
+Game.hasMany(Tournament, {
+  foreignKey: "game_id",
   // onDelete: "CASCADE",
 });
 
 // Tournament2s belongToMany Player2 (through Tournament2Tag)
-Tournament2.belongsToMany(Player2, {
-  through: Tournament2Player2,
-  foreignKey: "tournament2_id",
+Tournament.belongsToMany(Player, {
+  through: TournamentPlayer,
+  foreignKey: "tournament_id",
 });
 
 // Player2 belongToMany Tournament2s (through Tournament2Tag)
-Player2.belongsToMany(Tournament2, { 
-  through: Tournament2Player2, 
-  foreignKey: "player2_id" 
+Player.belongsToMany(Tournament, { 
+  through: TournamentPlayer, 
+  foreignKey: "player_id" 
 });
 
 // module.exports = {
@@ -115,4 +102,4 @@ Player2.belongsToMany(Tournament2, {
 //---------------------------------------------------------------------------
 
 
-module.exports = { Player, Tournament, Game, Game2, Player2, Tournament2, Tournament2Player2  };
+module.exports = { Player, Tournament, Game, TournamentPlayer  };
