@@ -34,35 +34,35 @@ const gameData = [
   
   },
   {
-    game_name: "Mortal Kombat 11",
+    game_name: "F1 22",
     description: "Tactical 5v5 hero shooter",
     cover_art:
-      "https://cdn.thegamesdb.net/images/original/boxart/front/62527-1.jpg",
-    game_type: "fighter",
+      "https://cdn.thegamesdb.net/images/original/boxart/front/99857-1.jpg",
+    game_type: "sport",
   
   },
   {
-    game_name: "Marvel v Capcom 3",
+    game_name: "FIFA 22",
     description: "Tactical 5v5 shooter",
     cover_art:
-      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1yej.png",
-    game_type: "fighter",
+      "https://images.igdb.com/igdb/image/upload/t_cover_big/co3dsm.png",
+    game_type: "sport",
   
   },
   {
-    game_name: "Street Fighter 5",
+    game_name: "NBA 2k22",
     description: "Brawl 5v5 hero shooter",
     cover_art:
-      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1pka.png",
-    game_type: "fighter",
+      "https://cdn.thegamesdb.net/images/original/boxart/front/99058-1.jpg",
+    game_type: "sport",
   
   },
   {
-    game_name: "Tekken 7",
+    game_name: "PGA 2k21",
     description: "Tactical 5v5 hero shooter",
     cover_art:
-      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1w4f.png",
-    game_type: "fighter",
+      "https://cdn.thegamesdb.net/images/original/boxart/front/94427-1.jpg",
+    game_type: "sport",
   
   },
   {
@@ -98,6 +98,38 @@ const gameData = [
   
   },
   {
+    game_name: "Mortal Kombat 11",
+    description: "Tactical 5v5 hero shooter",
+    cover_art:
+      "https://cdn.thegamesdb.net/images/original/boxart/front/62527-1.jpg",
+    game_type: "fighter",
+  
+  },
+  {
+    game_name: "Marvel v Capcom 3",
+    description: "Tactical 5v5 shooter",
+    cover_art:
+      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1yej.png",
+    game_type: "fighter",
+  
+  },
+  {
+    game_name: "Street Fighter 5",
+    description: "Brawl 5v5 hero shooter",
+    cover_art:
+      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1pka.png",
+    game_type: "fighter",
+  
+  },
+  {
+    game_name: "Tekken 7",
+    description: "Tactical 5v5 hero shooter",
+    cover_art:
+      "https://images.igdb.com/igdb/image/upload/t_cover_big/co1w4f.png",
+    game_type: "fighter",
+  
+  },
+  {
     game_name: "Among Us",
     description: "Tactical 5v5 hero shooter",
     cover_art:
@@ -127,38 +159,6 @@ const gameData = [
     cover_art:
       "https://cdn.thegamesdb.net/images/original/boxart/front/29478-1.jpg",
     game_type: "party",
-  
-  },
-  {
-    game_name: "F1 22",
-    description: "Tactical 5v5 hero shooter",
-    cover_art:
-      "https://cdn.thegamesdb.net/images/original/boxart/front/99857-1.jpg",
-    game_type: "sport",
-  
-  },
-  {
-    game_name: "FIFA 22",
-    description: "Tactical 5v5 shooter",
-    cover_art:
-      "https://images.igdb.com/igdb/image/upload/t_cover_big/co3dsm.png",
-    game_type: "sport",
-  
-  },
-  {
-    game_name: "NBA 2k22",
-    description: "Brawl 5v5 hero shooter",
-    cover_art:
-      "https://cdn.thegamesdb.net/images/original/boxart/front/99058-1.jpg",
-    game_type: "sport",
-  
-  },
-  {
-    game_name: "PGA 2k21",
-    description: "Tactical 5v5 hero shooter",
-    cover_art:
-      "https://cdn.thegamesdb.net/images/original/boxart/front/94427-1.jpg",
-    game_type: "sport",
   
   },
 ];

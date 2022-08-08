@@ -3,7 +3,7 @@ const seedTournaments = require('./tournament-seeds');
 const seedPlayers = require('./player-seeds');
 const seedTournamentPlayer = require('./tournamentPlayer-seeds');
 const { Player, Tournament, Game} = require('../models');
-// const gameData = require('./gameData.json');
+
 
 const sequelize = require('../config/connection');
 
@@ -21,11 +21,6 @@ const seedAll = async () => {
 
   await seedTournamentPlayer();
   console.log('\n----- Tournament_Player SEEDED -----\n');
-
-  // await Game.bulkCreate(gameData,{
-  //   individualHooks: true,
-  //   returning: true,
-  // });
 
   process.exit(0);
 };

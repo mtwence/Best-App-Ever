@@ -7,11 +7,11 @@ const {
 const withAuth = require("../utils/auth");
 
 // Michaels Codng Section:
-router.get("/games", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const gameData = await Game.findAll();
     const games = gameData.map((games) => games.get({ plain: true }));
-    res.render("allGames", {
+    res.render("homepage", {
       games,
     });
   } catch (err) {
