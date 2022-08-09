@@ -37,7 +37,7 @@ const loginFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/games'); //---- Gamee will be home page-------------
+        document.location.replace('/'); //---- Gamee will be home page-------------
       } else {
         alert(response.statusText);
       }
