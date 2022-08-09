@@ -32,7 +32,7 @@ const joinTournamentHandler = async (event) => {
   // const playerArray = player.map((player)=>player.player_id);
   // playerArray.push(session.player_id);
 
-  
+
 
     const updateData = await fetch(`/api/tournaments/${inputTournament}`, {
       method: "PUT",
@@ -45,7 +45,7 @@ const joinTournamentHandler = async (event) => {
       console.log(updateData);
       document.location.replace(`/api/tournaments/${inputTournament}`);
     } else {
-      alert("Failed to create tournament");
+      alert("Failed to join tournament");
     }
   
 };
