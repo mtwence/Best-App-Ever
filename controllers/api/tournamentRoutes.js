@@ -42,6 +42,25 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//testing------------------------
+// get one tournament's player
+router.get('/:id/players', async (req, res) => {
+  // find a single tournament by its `id`
+  try {
+    const tournamentData = await Tournament.findByPk(req.params.id, {
+      include: [{ model: Player, attributes: { player_name }}],
+    });
+    if (!tournamentData) {
+      res.status(404).json({ message: "No tournament found with that id!" });
+      return;
+    }
+    res.status(200).json(tournamentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+//-----------------------
+
 
 
 //http://localhost:3003/api/tournaments
@@ -122,6 +141,36 @@ router.put('/:id', (req, res) => {
       res.status(400).json(err);
     });
 });
+
+//testing -------------------------------------------------
+// update tournament
+// router.put('/put2/:id', (req, res) => {
+//   // update tournament data
+
+//   const playerInfo = await To.findAndCountAll({
+//     include: [
+//       {
+//         model: ,
+//         attributes: ['id', 'role'],
+//         as: 'roles',
+//         where: { [Op.or]: [{ role: { [Op.like]: '%MANAGER%' } },
+//         required: true
+//       },
+//       {
+//         model: UserRole,
+//         attributes: ['id', 'role'],
+//         as: 'roles2',
+//         required: true
+//       } 
+//     ],
+//     where: whereStatement,
+//   });
+// });
+
+//--------------------------------  
+
+
+
 
 //http://localhost:3003/api/tournaments/4
 router.delete('/:id', async (req, res) => {

@@ -32,61 +32,8 @@
   </div>
 
 </div>
+<script src="/js/joinTournament.js"></script>
 
-<script>
-
-  const inputTournament = document.getElementById('inputTournament').value;
-
-const joinTournamentHandler = async (event) => {
-    event.preventDefault();
-  
-    console.log("join_btn clicked")
-
-    const currentPlayers = await fetch(`/api/tournaments/${inputTournament}`,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    
-    
-    console.log({{ session.player_id }});
-
-    
-    const currentPlayersArray = currentPlayers.get({ plain: true });
-    console.log(currentPlayersArray);
-
-    if(currentPlayers.length){
-      currentPlayers.map((players) => players.id);
-    }
-    
-    newPlayersArray = currentPlayersArray.push({{ session.player_id }});
-
-    console.log(newPlayersArray);
-  
-      const response = await fetch(`/api/tournaments`, {
-        method: 'PUT',
-        body: JSON.stringify({ playerIds: [1,2,3]}),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      if (response.ok) {
-        document.location.replace(`/all-tournaments/`);
-      } else {
-        alert('Failed to join tournament');
-      }
-    
-  };
-
-  
-  document
-    .querySelector('#join_btn')
-    .addEventListener('click', joinTournamentHandler);
-  
-
-  
-</script>
 {{! original }}
 {{!-- <div class="text-center">
   <h2>{{tournament_name}}</h2>
