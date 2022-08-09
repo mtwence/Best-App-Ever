@@ -54,14 +54,7 @@ router.get('/:id', async (req, res) => {
 
 // create new tournament
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      tournament_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      player2Ids: [1, 2, 3, 4]
-    }
-  */
+ 
   Tournament.create(req.body)
     .then((tournament) => {
       // if there's tournament players, we need to create pairings to bulk create in the TournamentPlayer model
