@@ -18,7 +18,7 @@
 
 <body>
   <header>
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
    {{!-- <a class="navbar-item">
       <img src="/assets/images/playlogo.png" alt="our logo">
@@ -26,14 +26,14 @@
 
  <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a href="/" target="_parent"><button class="button is-info" id="homebtn">Home🎮 🎮 🎮</button></a>
+        <div class="buttons-red">
+          <a href="/" target="_parent"><button class="button is-rounded is-danger is-focused" id="homebtn">Home🎮 🎮 🎮</button></a>
                    <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         {{!-- <a href="/games">Games</a>  --}}
         <button class="no-button" id="logout">logout</button>
         {{else}}
-           <a href="/login" target="_parent"><button class="button is-info" id="signupbtn">Login👾 👾 👾</button></a>
+           <a href="/login" target="_parent"><button class="button is-rounded is-danger is-focused" id="signupbtn">Login👾 👾 👾</button></a>
         {{/if}} 
         </div>
       </div>
