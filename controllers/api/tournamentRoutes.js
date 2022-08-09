@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { players } = require('tournament/lib/match');
 const { Tournament, Game, Player, TournamentPlayer } = require('../../models');
 
 // The `/api/tournaments` endpoint
@@ -48,7 +49,7 @@ router.get('/:id/players', async (req, res) => {
   // find a single tournament by its `id`
   try {
     const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: [{ model: Player, attributes: { player_name }}],
+      include: { model: Player},
     });
     if (!tournamentData) {
       res.status(404).json({ message: "No tournament found with that id!" });
