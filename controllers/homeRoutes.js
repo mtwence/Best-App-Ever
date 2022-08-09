@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       games,
       logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -35,7 +36,8 @@ router.get('/games/:id/tournaments', withAuth, async (req, res) => {
 
     res.render('all-tournaments', {
       ...game,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -63,6 +65,7 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       player,
       logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -85,6 +88,7 @@ router.get("/player/:id", async (req, res) => {
     res.render("homepage", {
       ...player,
       logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -157,6 +161,7 @@ router.get("/tournament/:id", withAuth, async (req, res) => {
     res.render("tournament", {
       ...tournament,
       logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
@@ -186,7 +191,8 @@ router.get("/tournaments/", withAuth, async (req, res) => {
 
     res.render("all-tournaments", {
       tournaments,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      player_id: req.session.player_id
     });
   } catch (err) {
     res.status(500).json(err);
