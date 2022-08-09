@@ -103,6 +103,7 @@ router.post('/', (req, res) => {
 
 // update tournament
 router.put('/:id', (req, res) => {
+  console.log("put route: " + req.body.playerIds)
   // update tournament data
   Tournament.update(req.body, {
     where: {
