@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 });
 
 // Get all tournaments associated with a specific game 
-router.get('/games/:id/tournaments', async (req, res) => {
+router.get('/games/:id/tournaments', withAuth, async (req, res) => {
   try {
     const gameData = await Game.findByPk(req.params.id, {
       include: [
@@ -137,7 +137,7 @@ router.get("/login", (req, res) => {
 
 // get specific tournament
 // URL should be /tournaments/games/game_id ?
-router.get("/tournament/:id", async (req, res) => {
+router.get("/tournament/:id", withAuth, async (req, res) => {
   try {
     const tournamentData = await Tournament.findByPk(req.params.id, {
       include: [
@@ -164,7 +164,7 @@ router.get("/tournament/:id", async (req, res) => {
 });
 
 //get all tournaments
-router.get("/tournaments/", async (req, res) => {
+router.get("/tournaments/", withAuth, async (req, res) => {
   try {
     // Get all tournaments and JOIN with player data
     const tournamentData = await Tournament.findAll({
