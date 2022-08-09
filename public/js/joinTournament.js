@@ -3,21 +3,28 @@ const joinTournamentHandler = async (event) => {
   const inputTournament = document.getElementById("inputTournament").value;
 
 
-  const playerData = await fetch(
-    `/api/tournaments/${inputTournament}/players`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-  if (playerData.ok) {
-    console.log(playerData);
-    // document.location.replace("/tournaments");
-  } else {
-    alert("Failed to get a tournament");
-  }
+  fetch ( `/api/tournaments/${inputTournament}/players`,)
+  .then(function (response) {
+		return response.json();
+	}).then(function (data) {
+		console.log(data);
+  var players = data.players;
+  console.log(players);
+  const joiningPlayer = {
+    id: session.player_id,
+    player_name: session.player_name
+  };
+  console.log(joiningPlayer);
+  players.push(joiningPlayer);
+  console.log(players);
+
+  });
+  // obj = playerData.json();
+  // console.log(obj);
+  // const players = obj.players;
+  // console.log(players);
+
+  
 
   // const player = playerData.get({ plain: true });
   // console.log(player);

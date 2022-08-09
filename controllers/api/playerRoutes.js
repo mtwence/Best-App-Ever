@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
   // find a single player by its `id`
   try {
     const playerData = await Player.findByPk(req.params.id, {
-      include: [{ model: Tournament2 }],
+      include: [{ model: Tournament }],
     });
     if (!playerData) {
       res.status(404).json({ message: "No player found with that id!" });
@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
       req.session.player_id = playerData.id;
       req.session.logged_in = true;
 
-      res.status(200).json(playerData);
+      res.status(200).json(data);
     });
   } catch (err) {
     res.status(400).json(err);
