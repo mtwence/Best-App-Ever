@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
         // If successful, redirect the browser to the profile page
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        alert("Invalid login credentials");
       }
     }
   };
@@ -41,7 +41,7 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        alert("Please make sure email is correct and password is at least 8 characters.");
       }
     }
   };

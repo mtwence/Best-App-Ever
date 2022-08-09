@@ -32,6 +32,8 @@ const joinTournamentHandler = async (event) => {
   // const playerArray = player.map((player)=>player.player_id);
   // playerArray.push(session.player_id);
 
+  
+
     const updateData = await fetch(`/api/tournaments/${inputTournament}`, {
       method: "PUT",
       body: JSON.stringify({ playerIds: playersPut }),
