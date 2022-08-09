@@ -49,7 +49,6 @@
   const inputGame = document.getElementById('inputGame').value;
   const discord = document.querySelector('#discord').value.trim();
   
-
   if (tournament_name && tournament_players && description && inputGame && discord) {
     console.log(inputGame);
     const response = await fetch(`/api/tournaments`, {
