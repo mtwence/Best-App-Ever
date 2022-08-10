@@ -43,28 +43,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// GET Tournament by Id and its associated Players
-// http://localhost:3003/api/tournaments/3
-
-router.get('/:id/players', async (req, res) => {
-  // Find a Tournament by a specified id and include any associated Players
-  try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: { model: Player},
-    });
-    if (!tournamentData) {
-      res.status(404).json({ message: "No tournament found with that id!" });
-      return;
-    }
-    res.status(200).json(tournamentData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-//-----------------------
-
-
-
 //http://localhost:3003/api/tournaments
 
 // {
@@ -145,82 +123,6 @@ router.put('/:id', (req, res) => {
       res.status(400).json(err);
     });
 });
-
-//----------------------------------------------------------------
-
-
-// update tournament
-// router.put('/:id', (req, res) => {
-//   console.log("put route: " + req.body.playerIds)
-//   // update tournament data
-//   Tournament.update(req.body, {
-//     where: {
-//       id: req.params.id,
-//     },
-//   })
-//     .then((tournament) => {
-//       // find all associated players from TournamentPlayer
-//       return TournamentPlayer.findAll({ where: { tournament_id: req.params.id } });
-//     })
-//     .then((tournamentPlayers) => {
-//       // get list of current player_ids
-//       const tournamentPlayerIds = tournamentPlayers.map(({ player_id }) => player_id);
-//       // create filtered list of new player_ids
-//       const newTournamentPlayers = req.body.playerIds
-//         .filter((player_id) => !tournamentPlayerIds.includes(player_id))
-//         .map((player_id) => {
-//           return {
-//             tournament_id: req.params.id,
-//             player_id,
-//           };
-//         });
-//       // figure out which ones to remove
-//       const tournamentPlayersToRemove = tournamentPlayers
-//         .filter(({ player_id }) => !req.body.playerIds.includes(player_id))
-//         .map(({ id }) => id);
-
-//       // run both actions
-//       return Promise.all([
-//         TournamentPlayer.destroy({ where: { id: tournamentPlayersToRemove } }),
-//         TournamentPlayer.bulkCreate(newTournamentPlayers),
-//       ]);
-//     })
-//     .then((updatedTournamentPlayers) => res.json(updatedTournamentPlayers))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
-
-//testing -------------------------------------------------
-// update tournament
-// router.put('/put2/:id', (req, res) => {
-//   // update tournament data
-
-//   const playerInfo = await To.findAndCountAll({
-//     include: [
-//       {
-//         model: ,
-//         attributes: ['id', 'role'],
-//         as: 'roles',
-//         where: { [Op.or]: [{ role: { [Op.like]: '%MANAGER%' } },
-//         required: true
-//       },
-//       {
-//         model: UserRole,
-//         attributes: ['id', 'role'],
-//         as: 'roles2',
-//         required: true
-//       } 
-//     ],
-//     where: whereStatement,
-//   });
-// });
-
-//--------------------------------  
-
-
-
 
 //http://localhost:3003/api/tournaments/4
 router.delete('/:id', async (req, res) => {
