@@ -4,19 +4,11 @@
     <h2>
       <a href="/tournament/{{id}}">{{tournament_name}}</a>
     </h2>
-    <p>
-      <span for="img" aria-label="money">🎮</span>
-     <p> We want </p>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{player_quantity}}</span>
-      players!
-    </p>
-    <p>Created by {{host}} on {{date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{description}}
-    </p>
+     <p><span for="img" aria-label="money">📆</span>When: {{moment event_date "MMMM Do YYYY, h:mm"}}</p>
+     <p><span for="img" aria-label="money">🎮</span> We want: {{player_quantity}} players! </p>
+     <p><span for="img" aria-label="money">👑</span>Created by: {{host.player_name}} on {{moment date_created "MMMM Do YYYY"}}</p>
+     <p><span for="img" aria-label="money">🗒️</span>Description:{{description}}</p> 
   </div>
 </div>
+
 </div>

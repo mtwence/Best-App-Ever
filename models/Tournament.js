@@ -37,6 +37,9 @@ Tournament.init(
     },
     host: {
       type: DataTypes.INTEGER,
+      refereces: {
+        model: "player",
+        key: "id",
     },
     game_id: {
       type: DataTypes.INTEGER,

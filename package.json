@@ -1,4 +1,4 @@
-{
+-u root {
   "name": "p2-lets-play",
   "version": "1.0.0",
   "description": "",

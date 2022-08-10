@@ -43,7 +43,7 @@ const joinTournamentHandler = async (event) => {
     });
     if (updateData.ok) {
       console.log(updateData);
-      document.location.replace(`/api/tournaments/${inputTournament}`);
+      document.location.replace(`/tournaments/${inputTournament}`);
     } else {
       alert("Failed to join tournament");
     }
