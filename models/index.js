@@ -42,7 +42,6 @@ Tournament.belongsTo(Game, {
 // Categories have many Tournament2s
 Game.hasMany(Tournament, {
   foreignKey: "game_id",
-  // onDelete: "CASCADE",
 });
 
 // Tournament2s belongToMany Player2 (through Tournament2Tag)
