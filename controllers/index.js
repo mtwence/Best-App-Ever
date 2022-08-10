@@ -1,3 +1,4 @@
+// Testing dynamic game cover_art generation from video game database API
 // let clientId = "0at2pjw8y4oox3x0f3j68210nfo9l7"
 // let secret ="d66lvot6b37muihs27fjvql1wecczt"
 

@@ -5,7 +5,8 @@ const joinTournamentHandler = async (event) => {
   const inputPlayerInt = parseInt(inputPlayer);
   let playersPut;
   let playersPutNoKeys;
-  const response = await fetch(`/api/tournaments/${inputTournament}/players`);
+  // const response = await fetch(`/api/tournaments/${inputTournament}/players`);
+  const response = await fetch(`/api/tournaments/${inputTournament}`);
   const data = await response.json();
   var players = data.players.map((player) => player.id);
   players.push(inputPlayerInt);

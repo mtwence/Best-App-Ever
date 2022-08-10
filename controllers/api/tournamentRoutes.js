@@ -2,16 +2,17 @@ const router = require('express').Router();
 const { players } = require('tournament/lib/match');
 const { Tournament, Game, Player, TournamentPlayer } = require('../../models');
 
-// The `/api/tournaments` endpoint
+// RESTful Routes
+// GET POST PUT DELETE
+// http://localhost:3003/api/tournaments
+// http://deployed-URL.com/api/tournaments
 
 
+// GET Tournaments
+// http://localhost:3003/api/tournaments
 
-
-//http://localhost:3003/api/tournaments
-
-// get all tournaments
 router.get('/', async (req, res) => {
-  // find all tournaments
+  // Find all Tournaments and include any associated Games and Players
   try {
     const tournamentData = await Tournament.findAll({
       include: [{ model: Game }, { model: Player }],
@@ -23,12 +24,11 @@ router.get('/', async (req, res) => {
 });
 
 
+// GET Tournament by Id
+// http://localhost:3003/api/tournaments/3
 
-//http://localhost:3003/api/tournaments/3
-
-// get one tournament
 router.get('/:id', async (req, res) => {
-  // find a single tournament by its `id`
+  // Find a Tournament by a specified id and include any associated Games and Players
   try {
     const tournamentData = await Tournament.findByPk(req.params.id, {
       include: [{ model: Game }, { model: Player }],
@@ -43,10 +43,11 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//testing------------------------
-// get one tournament's player
+// GET Tournament by Id and its associated Players
+// http://localhost:3003/api/tournaments/3
+
 router.get('/:id/players', async (req, res) => {
-  // find a single tournament by its `id`
+  // Find a Tournament by a specified id and include any associated Players
   try {
     const tournamentData = await Tournament.findByPk(req.params.id, {
       include: { model: Player},
