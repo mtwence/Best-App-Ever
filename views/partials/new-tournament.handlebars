@@ -59,13 +59,13 @@
   const description = document.querySelector('#tournament-desc').value.trim();
   const inputGame = document.getElementById('inputGame').value;
   const discord = document.querySelector('#tournament-disc').value.trim();
-  const host =  document.querySelector('#host').value.trim();
+  const host = document.querySelector('#host').value.trim();
   
   if (tournament_name && tournament_players && description && inputGame && discord && tournament_date && host) {
     console.log(inputGame);
     const response = await fetch(`/api/tournaments`, {
       method: 'POST',
-      body: JSON.stringify({ tournament_name: tournament_name, player_quantity: tournament_players, description: description, game_id: inputGame, discord_link: discord, event_date: tournament_date, host: host}),
+      body: JSON.stringify({ tournament_name: tournament_name, player_quantity: tournament_players, description: description, game_id: inputGame, discord_link: discord, event_time: tournament_date, host: host}),
       headers: {
         'Content-Type': 'application/json',
       },

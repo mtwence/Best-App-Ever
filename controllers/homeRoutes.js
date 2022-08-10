@@ -3,6 +3,7 @@ const {
   Game,
   Tournament,
   Player,
+  TournamentPlayer,
 } = require("../models");
 const withAuth = require("../utils/auth");
 
@@ -153,6 +154,7 @@ router.get("/tournament/:id", withAuth, async (req, res) => {
           model: Game,
           attributes: ["cover_art"],
         },
+  
       ],
     });
 

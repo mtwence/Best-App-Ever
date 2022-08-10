@@ -4,10 +4,10 @@
     <h2>
       <a href="/tournament/{{id}}">{{tournament_name}}</a>
     </h2>
-     <p><span for="img" aria-label="money">📆</span>When: {{moment event_date "MMMM Do YYYY, h:mm"}}</p>
+     <p><span for="img" aria-label="money">📆</span>When: {{moment event_date "MMMM Do YYYY, hh:mm a"}}</p>
      <p><span for="img" aria-label="money">🎮</span> We want: {{player_quantity}} players! </p>
-     <p><span for="img" aria-label="money">👑</span>Created by: {{host.player_name}} on {{moment date_created "MMMM Do YYYY"}}</p>
-     <p><span for="img" aria-label="money">🗒️</span>Description:{{description}}</p> 
+     <p><span for="img" aria-label="money">👑</span>Created by: {{host}} on {{moment date_created "MMMM Do YYYY"}}</p>
+     <p><span for="img" aria-label="money">🗒️</span>Description: {{description}}</p> 
   </div>
 </div>
 
