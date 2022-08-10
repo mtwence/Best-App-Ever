@@ -19,7 +19,7 @@ Tournament.init(
       allowNull: false,
     },
     player_quantity: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     description: {
@@ -37,6 +37,10 @@ Tournament.init(
     },
     host: {
       type: DataTypes.INTEGER,
+      refereces: {
+        model: "player",
+        key: "player_id",
+      },
     },
     game_id: {
       type: DataTypes.INTEGER,
