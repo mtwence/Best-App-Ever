@@ -66,13 +66,13 @@ This app makes it easier for gamers all around to have access to 5 different cat
 
 ## Authors
 
-The Let's Play app was created by 
+The Let's Play app was created by:
 
-# Michael Wence: https://github.com/mtwence
+* Michael Wence: https://github.com/mtwence
 
-# Genesis Rosales: https://github.com/genrosales11
+* Genesis Rosales: https://github.com/genrosales11
 
-# Zorigtbaatar Zulkhuu: https://github.com/zzzorigtbaatar
+* Zorigtbaatar Zulkhuu: https://github.com/zzzorigtbaatar
  
 
 ## License
