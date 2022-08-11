@@ -60,7 +60,7 @@ This app makes it easier for gamers all around to have access to 5 different cat
  
  * The application has responsive layout that adapts to different screens
  * Easy to navigate for all users
- * Bulma for Site Features: Dropdown, search form, checkboxes, results card styling & search button 
+ * Bulma for Site Features: Game card styling, tournament and login page  
 
 
 
@@ -68,11 +68,12 @@ This app makes it easier for gamers all around to have access to 5 different cat
 
 The Let's Play app was created by:
 
-* Michael Wence: https://github.com/mtwence
-
-* Genesis Rosales: https://github.com/genrosales11
-
-* Zorigtbaatar Zulkhuu: https://github.com/zzzorigtbaatar
+* Michael Wence:
+[Github](https://github.com/mtwence).
+* Genesis Rosales: 
+[Github](https://github.com/genrosales11).
+* Zorigtbaatar Zulkhuu:
+[Github]( https://github.com/zzzorigtbaatar).
  
 
 ## License
