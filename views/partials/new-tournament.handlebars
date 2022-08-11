@@ -1,111 +1,50 @@
-<div class="card">
-  <div class="column is-full">
+<div class="card m-2 p-1">
+  <div class="has-text-centered">
     <h3>Create a New Tournament:</h3>
-    <form class="form new-tournament-form">
-      <div class="is-hidden">
-       <label for="tournament-name">Tournament Game:</label>
-        <input class="form-input" type="text" value="{{id}}" id="inputGame" name="tournament-game" readonly/>
-      </div>
-        <div class="is-hidden">
-       <label for="tournament-name">Tournament host:</label>
-        <input class="form-input" type="number" value="{{session.player_id}}" id="host" name="tournament-host" readonly/>
-      </div>
-      <div class="column is-full">
-        <div class="form-group">
-          <label for="tournament-name">Tournament Name:</label>
-          <input class="form-input" type="text" id="tournament-name" name="tournament-name"/>
-        </div>
-      </div>
-      <div class="column is-full">
-        <div class="form-group">
-          <label for="tournament-name">Tournament Date:</label>
-          <input class="form-input" type="datetime-local" id="tournament-date" name="tournament-date" />
-        </div>
-      </div>
-      <div class="column is-full">
-        <div class="form-group">
-          <label for="tournament-players">How many total players?:</label>
-          <input class="form-input" type="number" id="tournament-players" name="tournament-players" />
-        </div>
-      </div>
-      <div class="column is-full">
-        <div class="form-group">
-          <label for="tournament-desc">Description:</label>
-           <input class="form-input" type="text" id="tournament-desc" name="tournament-desc" />
-        </div>
-      </div>
-       <div class="column is-full">
-        <div class="form-group">
-          <label for="discord">Discord Server Link:</label>
-         <input class="form-input" type="text" id="tournament-disc" name="tournament-discord" />
-        </div>
-      </div>
-      <div class="column is-full">
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Create</button>
-        </div>
-      </div>
-    </form>
   </div>
+  <form class="form new-tournament-form">
+    <div class="is-hidden">
+      <label for="tournament-name">Tournament Game:</label>
+      <input class="input" type="text" value="{{id}}" id="inputGame" name="tournament-game" readonly />
+    </div>
+    <div class="is-hidden">
+      <label for="tournament-name">Tournament host:</label>
+      <input class="input" type="number" value="{{session.player_id}}" id="host" name="tournament-host" readonly />
+    </div>
+    <div class="field">
+      <label for="tournament-name">Tournament Name:</label>
+      <div class="control">
+        <input class="input" type="text" id="tournament-name" name="tournament-name" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="tournament-name">Tournament Date:</label>
+      <div class="control">
+        <input class="input" type="datetime-local" id="tournament-date" name="tournament-date" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="tournament-players">How many total players?:</label>
+      <div class="control">
+        <input class="input" type="number" id="tournament-players" name="tournament-players" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="discord">Discord Server Link:</label>
+      <div class="control">
+        <input class="input" type="text" id="tournament-disc" name="tournament-discord" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="tournament-desc">Description:</label>
+      <div class="control">
+        <input class="input" type="textarea" id="tournament-desc" name="tournament-desc" />
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>
 </div>
-  <script >
-  
-  const newFormHandler = async (event) => {
-  event.preventDefault();
 
-  const tournament_name = document.querySelector('#tournament-name').value.trim();
-  const tournament_date = document.querySelector('#tournament-date').value.trim();
-  const tournament_players = document.querySelector('#tournament-players').value.trim();
-  const description = document.querySelector('#tournament-desc').value.trim();
-  const inputGame = document.getElementById('inputGame').value;
-  const discord = document.querySelector('#tournament-disc').value.trim();
-  const host = document.querySelector('#host').value.trim();
-  
-  if (tournament_name && tournament_players && description && inputGame && discord && tournament_date && host) {
-    console.log(inputGame);
-    const response = await fetch(`/api/tournaments`, {
-      method: 'POST',
-      body: JSON.stringify({ tournament_name: tournament_name, player_quantity: tournament_players, description: description, game_id: inputGame, discord_link: discord, event_time: tournament_date, host: host}),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    console.log(response)
-    if (response.ok) {
-      document.location.replace(`/games/${inputGame}/tournaments`);
-    } else {
-      alert('Failed to create tournament');
-    }
-  }
-};
-document
-  .querySelector('.new-tournament-form')
-  .addEventListener('submit', newFormHandler);
-</script>
-
-   {{!-- <div class="form-group col-md-4">
-          <label for="inputGame">Game:</label>
-          <select id="inputGame" class="form-select form-select-lg">
-            <option value="0">Choose...</option>
-            <option value="17">Among Us</option>
-            <option value="2">Counter Strike: Global Offensive</option>
-            <option value="10">DOTA 2</option>
-            <option value="5">F1 22</option>
-            <option value="6">FIFA 22</option>
-            <option value="18">Gang Beasts</option>
-            <option value="11">Heroes of the Storm</option>
-            <option value="9">League of Legends</option>
-            <option value="14">Marvel v Capcom 3</option>
-            <option value="13">Mortal Kombat 11</option>
-            <option value="7">NBA 2k22</option>
-            <option value="3">Overwatch</option>
-            <option value="8">PGA 2k21</option>
-            <option value="19">Pummel Party</option>
-            <option value="4">Rainbow Six Siege</option>
-            <option value="20">Rocket League</option>
-            <option value="12">Smite</option>
-            <option value="15">Street Fighter 5</option>
-            <option value="16">Tekken 7</option>
-            <option value="1">Valorant</option>
-          </select>
-        </div> --}}
+<script src="/js/createTournament.js"></script>
