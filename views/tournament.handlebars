@@ -1,8 +1,8 @@
 <div class="card">
-  <div class="card-image" onclick="this.querySelector('a').click(); return true;"> <a href="/games/{{game.id}}/tournaments"></a>
-      <figure class="image is-3by2">
-        <img class="" src="{{game.cover_art}}" alt="game art">
-      </figure>
+  <div class="card-image text-center" onclick="this.querySelector('a').click(); return true;"> <a href="/games/{{game.id}}/tournaments"></a>
+      {{!-- <figure class="image"> --}}
+        <img class="" src="{{game.cover_art}}" alt="game art" width="50%">
+      {{!-- </figure> --}}
   </div>
   <div class="card-content m-2 is-8">
     <div class="has-text-centered">
