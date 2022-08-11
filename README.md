@@ -48,7 +48,6 @@ This app makes it easier for gamers all around to have access to 5 different cat
  * Easy to navigate for all users
  * Bulma for Site Features: Dropdown, search form, checkboxes, results card styling & search button 
 
-### Future Development
 
 
 ## Authors
