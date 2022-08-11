@@ -116,16 +116,6 @@ router.get("/models/Game.js", withAuth, async (req, res) => {
   }
 });
 
-// router.get("/login", (req, res) => {
-//   // If the user is already logged in, redirect the request to another route
-//   if (req.session.logged_in) {
-//     res.redirect("/models/Game.js");
-//     return;
-//   }
-
-//   res.render("login");
-// });
-
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -141,7 +131,6 @@ router.get("/login", (req, res) => {
 //Member Zori's coding area
 
 // get specific tournament
-// URL should be /tournaments/games/game_id ?
 router.get("/tournament/:id", withAuth, async (req, res) => {
   try {
     const tournamentData = await Tournament.findByPk(req.params.id, {
