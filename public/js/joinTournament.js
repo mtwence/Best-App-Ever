@@ -1,11 +1,12 @@
 const joinTournamentHandler = async (event) => {
   event.preventDefault();
+
   const inputTournament = document.getElementById("inputTournament").value;
   const inputPlayer = document.getElementById("inputPlayer").value;
   const inputPlayerInt = parseInt(inputPlayer);
+
   let playersPut;
-  let playersPutNoKeys;
-  // const response = await fetch(`/api/tournaments/${inputTournament}/players`);
+
   const response = await fetch(`/api/tournaments/${inputTournament}`);
   const data = await response.json();
   var players = data.players.map((player) => player.id);
@@ -19,6 +20,7 @@ const joinTournamentHandler = async (event) => {
     },
     body: JSON.stringify({ playerIds: playersPut }),
   });
+
   if (updateData.ok) {
     console.log(updateData);
     document.location.replace(`/tournament/${inputTournament}`);
@@ -26,6 +28,7 @@ const joinTournamentHandler = async (event) => {
     alert("Failed to join tournament");
   }
 };
+
 document
   .querySelector("#join_btn")
   .addEventListener("click", joinTournamentHandler);
