@@ -10,7 +10,15 @@ This app makes it easier for gamers all around to have access to 5 different cat
 
 ## Screenshots
 
-<img width="293" alt="Screen Shot 2022-08-10 at 5 29 35 PM" src="https://user-images.githubusercontent.com/107210172/184045385-1dba21bd-46e4-4170-bbfd-c5d6a1d98600.png">
+<img width="1270" alt="Screen Shot 2022-08-10 at 7 57 38 PM" src="https://user-images.githubusercontent.com/107210172/184058032-d5b58dde-fda0-4121-8ea9-99f1ad2e0109.png">
+
+
+<img width="363" alt="Screen Shot 2022-08-10 at 7 58 08 PM" src="https://user-images.githubusercontent.com/107210172/184057954-33c699f6-729f-4b23-847f-ee0e5d59e4e2.png">
+
+
+<img width="1114" alt="Screen Shot 2022-08-10 at 7 58 45 PM" src="https://user-images.githubusercontent.com/107210172/184057968-5f109189-8678-4ef1-a909-45b9c1daf14c.png">
+
+
 
 
 ## Links
