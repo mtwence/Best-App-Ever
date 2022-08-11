@@ -41,10 +41,6 @@ Player.init(
             newPlayerData.password = await bcrypt.hash(newPlayerData.password, 10);
             return newPlayerData;
         },
-        // beforeUpdate: async (updatedPlayerData) => {
-        //     updatedPlayerData.password = await bcrypt.hash(updatedPlayerData.password, 10);
-        //     return updatedPlayerData;
-        // }
     },
     sequelize,
     timestamps: false,
