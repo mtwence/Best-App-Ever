@@ -1,5 +1,3 @@
-
-
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
@@ -24,7 +22,7 @@ const loginFormHandler = async (event) => {
     }
   };
   
-  const signupFormHandler = async (event) => {
+const signupFormHandler = async (event) => {
     event.preventDefault();
   
     const player_name = document.querySelector('#name-signup').value.trim();
@@ -34,7 +32,7 @@ const loginFormHandler = async (event) => {
     if (player_name && email && password) {
       const response = await fetch('/api/players', {
         method: 'POST',
-        body: JSON.stringify({ player_name, email, password }),
+        body: JSON.stringify({ player_name: player_name, email: email, password: password}),
         headers: { 'Content-Type': 'application/json' },
       });
   

@@ -8,32 +8,25 @@
   {{!--bulma CDN--}}
    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
   <!-- CSS only -->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"> 
-  
- 
-
 </head>
 
 <body>
   <header>
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-   {{!-- <a class="navbar-item">
-      <img src="/assets/images/playlogo.png" alt="our logo">
-    </a> --}}
-
  <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons-red">
-          <a href="/" target="_parent"><button class="button is-rounded is-danger is-focused" id="homebtn">Home🎮 🎮 🎮</button></a>
+          <a href="/" target="_parent"><button class="button is-rounded is-danger is-focused" id="homebtn">🎮 Home 🎮</button></a>
                    <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        {{!-- <a href="/games">Games</a>  --}}
-        <button class="no-button" id="logout">logout</button>
+       
+        <button class="button is-rounded is-warning is-focused " id="logout">🕹️ Logout 🕹️</button>
         {{else}}
-           <a href="/login" target="_parent"><button class="button is-rounded is-danger is-focused" id="signupbtn">Login👾 👾 👾</button></a>
+           <a href="/login" target="_parent"><button class="button is-rounded is-success is-focused" id="signupbtn">👾 Login 👾</button></a>
         {{/if}} 
         </div>
       </div>
@@ -44,18 +37,14 @@
       </nav>
     </header>
     <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
       {{{ body }}}
     </main>
     <footer>
       
     </footer>
   </div> 
-
-   <!-- Render script for logged in users only -->
-   {{!-- <script src="/js/joinTournament.js"></script> --}}
   {{#if logged_in}}
-  <script src="/js/logout2.js"></script>
+  <script src="/js/logout.js"></script>
   {{/if}}
 </body>
 
