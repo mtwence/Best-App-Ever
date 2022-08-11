@@ -7,6 +7,5 @@ router.use('/players', playerRoutes);
 router.use('/games', gameRoutes);
 router.use('/tournaments', tournamentRoutes);
 
-
 module.exports = router;
 

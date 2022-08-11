@@ -1,18 +1,18 @@
-const router = require('express').Router();
-const { players } = require('tournament/lib/match');
-const { Tournament, Game, Player, TournamentPlayer } = require('../../models');
+const router = require("express").Router();
+const { players } = require("tournament/lib/match");
+const { Tournament, Game, Player, TournamentPlayer } = require("../../models");
 
-// The `/api/tournaments` endpoint
+// RESTful Routes
+// GET POST PUT DELETE
+// http://localhost:{PORT}/api/tournaments
+// http://deployed-URL.com/api/tournaments
 
+// GET Tournaments
+// http://localhost:3001/api/tournaments
 
-
-
-//http://localhost:3003/api/tournaments
-
-// get all tournaments
-router.get('/', async (req, res) => {
-  // find all tournaments
+router.get("/", async (req, res) => {
   try {
+    // Find all Tournaments and include any associated Games and Players
     const tournamentData = await Tournament.findAll({
       include: [{ model: Game }, { model: Player }],
     });
@@ -22,14 +22,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET Tournament by Id
+// http://localhost:3001/api/tournaments/3
 
-
-//http://localhost:3003/api/tournaments/3
-
-// get one tournament
-router.get('/:id', async (req, res) => {
-  // find a single tournament by its `id`
+router.get("/:id", async (req, res) => {
   try {
+    // Find a Tournament by a specified id and include any associated Games and Players
     const tournamentData = await Tournament.findByPk(req.params.id, {
       include: [{ model: Game }, { model: Player }],
     });
@@ -43,50 +41,34 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//testing------------------------
-// get one tournament's player
-router.get('/:id/players', async (req, res) => {
-  // find a single tournament by its `id`
-  try {
-    const tournamentData = await Tournament.findByPk(req.params.id, {
-      include: { model: Player},
-    });
-    if (!tournamentData) {
-      res.status(404).json({ message: "No tournament found with that id!" });
-      return;
-    }
-    res.status(200).json(tournamentData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-//-----------------------
+// CREATE Tournament
+// http://localhost:3001/api/tournaments
 
-
-
-//http://localhost:3003/api/tournaments
-
+// Example JSON body:
 // {
-//   "tournament_name": "SW Battlefront",
-//   "description": "fun game.",
-//   "player_quantity": 66
+// tournament_name: "5v5 Custom",
+// description: "For funzies",
+// player_quantity: 10,
+// game_id: 1
 // }
 
-// create new tournament
-router.post('/', (req, res) => {
- 
+router.post("/", (req, res) => {
+  // Create a tournament
   Tournament.create(req.body)
     .then((tournament) => {
-      // if there's tournament players, we need to create pairings to bulk create in the TournamentPlayer model
+      // If there are associated Players
       if (req.body.playerIds) {
+        // create a pairing between the tournament id and each player id, and map each pairing as one entry unto an array
         const tournamentPlayerIdArr = req.body.playerIds.map((player_id) => {
           return {
+            //each entry being mapped is an object with key value pairs of the tournament id and a player id
             tournament_id: tournament.id,
             player_id,
           };
         });
+        // bulk create with the array of the pairings of tournament id and player ids
         return TournamentPlayer.bulkCreate(tournamentPlayerIdArr);
-      } 
+      }
       res.status(200).json(tournament);
     })
     .then((tournamentPlayerIds) => res.status(200).json(tournamentPlayerIds))
@@ -96,29 +78,34 @@ router.post('/', (req, res) => {
     });
 });
 
-//http://localhost:3003/api/tournaments/4
+// UPDATE Tournament
+// http://localhost:3001/api/tournaments/3
+
+// Example JSON body:
 // {
-// 	"description" : "Lets play old games"
+// "playerIds" : [1,2,3,4]
 // }
 
-//testing put route after presentation--------------------------  
-
-router.put('/:id', (req, res) => {
-  console.log("put route: " + req.body.playerIds)
-  // update tournament data
+router.put("/:id", (req, res) => {
+  console.log("put route: " + req.body.playerIds);
+  // Update a Tournament specified by an id
   Tournament.update(req.body, {
     where: {
       id: req.params.id,
     },
   })
     .then((tournament) => {
-      // find all associated players from TournamentPlayer
-      return TournamentPlayer.findAll({ where: { tournament_id: req.params.id } });
+      // Find all associated TournamentPlayers of the tournament specified by id
+      return TournamentPlayer.findAll({
+        where: { tournament_id: req.params.id },
+      });
     })
     .then((tournamentPlayers) => {
-      // get list of current player_ids
-      const tournamentPlayerIds = tournamentPlayers.map(({ player_id }) => player_id);
-      // create filtered list of new player_ids
+      // Get list of all the current associated Players ids and map them unto an array
+      const tournamentPlayerIds = tournamentPlayers.map(
+        ({ player_id }) => player_id
+      );
+      // Create a list of filtered out associated players that are not in the list of current associated players and map them unto an array
       const newTournamentPlayers = req.body.playerIds
         .filter((player_id) => !tournamentPlayerIds.includes(player_id))
         .map((player_id) => {
@@ -127,12 +114,13 @@ router.put('/:id', (req, res) => {
             player_id,
           };
         });
-      // figure out which ones to remove
+      // Create a list of filtered out associated players that are not in the list of associated players passed in the JSON body
       const tournamentPlayersToRemove = tournamentPlayers
+        // if the list of associated players' ids passed in the JSON body does NOT include a current associated player's id, map unto an array the id of the TournamentPlayer entry of that associated player missing from the playerIds in the JSON body
         .filter(({ player_id }) => !req.body.playerIds.includes(player_id))
         .map(({ id }) => id);
 
-      // run both actions
+      // Destroy/delete the TournamentPlayer entries of each id in the array of TournamentPlayers to remove, then bulk create with the ids in the array of new TournamentPlayers
       return Promise.all([
         TournamentPlayer.destroy({ where: { id: tournamentPlayersToRemove } }),
         TournamentPlayer.bulkCreate(newTournamentPlayers),
@@ -145,85 +133,11 @@ router.put('/:id', (req, res) => {
     });
 });
 
-//----------------------------------------------------------------
+// DELETE Tournament
+// http://localhost:3001/api/tournaments/3
 
-
-// update tournament
-// router.put('/:id', (req, res) => {
-//   console.log("put route: " + req.body.playerIds)
-//   // update tournament data
-//   Tournament.update(req.body, {
-//     where: {
-//       id: req.params.id,
-//     },
-//   })
-//     .then((tournament) => {
-//       // find all associated players from TournamentPlayer
-//       return TournamentPlayer.findAll({ where: { tournament_id: req.params.id } });
-//     })
-//     .then((tournamentPlayers) => {
-//       // get list of current player_ids
-//       const tournamentPlayerIds = tournamentPlayers.map(({ player_id }) => player_id);
-//       // create filtered list of new player_ids
-//       const newTournamentPlayers = req.body.playerIds
-//         .filter((player_id) => !tournamentPlayerIds.includes(player_id))
-//         .map((player_id) => {
-//           return {
-//             tournament_id: req.params.id,
-//             player_id,
-//           };
-//         });
-//       // figure out which ones to remove
-//       const tournamentPlayersToRemove = tournamentPlayers
-//         .filter(({ player_id }) => !req.body.playerIds.includes(player_id))
-//         .map(({ id }) => id);
-
-//       // run both actions
-//       return Promise.all([
-//         TournamentPlayer.destroy({ where: { id: tournamentPlayersToRemove } }),
-//         TournamentPlayer.bulkCreate(newTournamentPlayers),
-//       ]);
-//     })
-//     .then((updatedTournamentPlayers) => res.json(updatedTournamentPlayers))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(400).json(err);
-//     });
-// });
-
-//testing -------------------------------------------------
-// update tournament
-// router.put('/put2/:id', (req, res) => {
-//   // update tournament data
-
-//   const playerInfo = await To.findAndCountAll({
-//     include: [
-//       {
-//         model: ,
-//         attributes: ['id', 'role'],
-//         as: 'roles',
-//         where: { [Op.or]: [{ role: { [Op.like]: '%MANAGER%' } },
-//         required: true
-//       },
-//       {
-//         model: UserRole,
-//         attributes: ['id', 'role'],
-//         as: 'roles2',
-//         required: true
-//       } 
-//     ],
-//     where: whereStatement,
-//   });
-// });
-
-//--------------------------------  
-
-
-
-
-//http://localhost:3003/api/tournaments/4
-router.delete('/:id', async (req, res) => {
-  // delete one tournament by its `id` value
+router.delete("/:id", async (req, res) => {
+  // Destroy/delete a Tournament by id
   try {
     const tournamentData = await Tournament.destroy({
       where: { id: req.params.id },
