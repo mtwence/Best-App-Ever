@@ -123,7 +123,7 @@ router.get("/login", (req, res) => {
     return;
   }
 
-  res.render("login2");
+  res.render("login");
 });
 
 //------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ router.get("/tournament/:id", withAuth, async (req, res) => {
         },
         {
           model: Game,
-          attributes: ["cover_art"],
+  
         },
   
       ],
@@ -201,7 +201,7 @@ router.get("/newTournament", withAuth, async (req, res) => {
         },
         {
           model: Game,
-          attributes: ["cover_art"],
+          attributes: ["cover_art", "id"],
         },
       ],
     });
