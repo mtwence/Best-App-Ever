@@ -63,7 +63,7 @@ An npm package that has more than 130 helper functions, in around 20 categories,
 
 ### Website Demo
 
-![App Demp](./assets/images/demo.gif)
+![App Demp](./assets/images/appdemo.gif)
 
 ### Code Snippets
 
