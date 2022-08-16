@@ -4,103 +4,201 @@
 
 ## Description
 
-A simple web app to create, join, and organize gaming tournaments for the most popular games currently out. 
+A simple web app to create, join, and organize gaming tournaments for the most popular games currently out.
 
-This app makes it easier for gamers all around to have access to 5 different categories of video games they can choose from.
+## Table of Contents
 
-## Screenshots
-
-<img width="1270" alt="Screen Shot 2022-08-10 at 7 57 38 PM" src="https://user-images.githubusercontent.com/107210172/184058032-d5b58dde-fda0-4121-8ea9-99f1ad2e0109.png">
-
-
-<img width="363" alt="Screen Shot 2022-08-10 at 7 58 08 PM" src="https://user-images.githubusercontent.com/107210172/184057954-33c699f6-729f-4b23-847f-ee0e5d59e4e2.png">
-
-
-<img width="1114" alt="Screen Shot 2022-08-10 at 7 58 45 PM" src="https://user-images.githubusercontent.com/107210172/184057968-5f109189-8678-4ef1-a909-45b9c1daf14c.png">
-
-
-
+- [Description](#description)
+- [Links](#links)
+- [Installation](#installation)
+- [Technologies](#technologies-used)
+- [Usage](#usage)
+- [Authors](#authors)
+- [Questions](#questions)
+- [License](#license)
 
 ## Links
 
-[Deployed Link](https://lets-play-tourneys.herokuapp.com/).
+[Deployed Link - Let's Play](https://lets-play-tourneys.herokuapp.com/)
 
 [Project Repository](https://github.com/mtwence/lets-play)
 
-## Technologies Used:
-
- * Javascript 
- * CSS
- * Fetch / AJAX
- * Bulma
- * Node
- * NPM
- * Express
- * MySQL
- * Sequelize ORM  
- * Express-Session
- * Handlebars
- * Handlebars-Helpers
-
-
 ## Installation
 
-1. Clone Repository: 
+1.  Clone Repository:
 
         " git clone git@github.com:mtwence/lets-play.git"
 
-2. install [npm](https://nodejs.org/en/) using command line:
-    
-        " npm install "  
+2.  Install [npm](https://nodejs.org/en/) dependencies using the command line:
 
+        " npm install "
 
-3. Install the dependencies
+## Technologies Used:
 
-### CSS Framework
- 
- * The application has responsive layout that adapts to different screens
- * Easy to navigate for all users
- * Bulma for Site Features: Game card styling, tournament and login page  
+- Javascript
+- CSS
+- Fetch / AJAX
+- Node
+- NPM
+- Express
+- MySQL
+- Sequelize ORM
+- Express-Session
+- Handlebars
+- Bulma
+- Handlebars-Helpers
 
+### New Technology
 
+#### [Handlebars-Helpers](https://github.com/helpers/handlebars-helpers)
+
+An npm package that has more than 130 helper functions, in around 20 categories, that you can use in conjunction with your handlebar templates.
+
+### CSS Framework - Bulma
+
+- The application has responsive layouta that adapts to different screen sizes.
+- Game cards, login/sign-up, tournament creation form, and tournament pages were all styled using Bulma.
+
+## Usage
+
+### Website Demo
+
+![App Demp](./assets/images/demo.gif)
+
+### Code Snippets
+
+HTML for each game card was put into a partial. And using handlebars we grab the game_id and it's associated cover art, creating a link to the tournaments and an image tile respectively.
+
+```handlebars
+<div
+  class="card btn m-1"
+  style="width: 18rem;"
+  onclick="this.querySelector('a').click(); return true;"
+>
+  <a href="/games/{{id}}/tournaments"></a>
+  <div class="card-image mt-2">
+    <figure class="image is-3by4">
+      <img class="card-img-top" src="{{cover_art}}" alt="game art" />
+    </figure>
+  </div>
+</div>
+```
+
+This game card partial is then inserted into our homepage template. Using the handlebars-helpers "eq" function we compare the game's game_type attribute to a string repsrenting that genre. This then renders the game cards for the right genres into their respective rows.
+
+```handlebars
+<header class="has-text-centered has-text-weight-bold">
+  <h1>Select A Game to Join a Tournament</h1>
+</header>
+<Section class="column is-full m-1">
+  <h2>Shooters</h2>
+  <div class="row">
+    {{#each games as |game| }}
+    {{#if (eq game.game_type "shooter")}}
+    {{> game-cards}}
+    {{/if}}
+    {{/each}}
+  </div>
+</Section>
+<Section class="column is-full m-1">
+  <h2>Sports</h2>
+  <div class="row ">
+    {{#each games as |game| }}
+    {{#if (eq game.game_type "sport")}}
+    {{> game-cards}}
+    {{/if}}
+    {{/each}}
+  </div>
+</Section>
+<Section class="column is-full m-1">
+  <h2>MOBA</h2>
+  <div class="row ">
+    {{#each games as |game| }}
+    {{#if (eq game.game_type "moba")}}
+    {{> game-cards}}
+    {{/if}}
+    {{/each}}
+  </div>
+</Section>
+<Section class="column is-full m-1">
+  <h2>Fighters</h2>
+  <div class="row ">
+    {{#each games as |game| }}
+
+    {{#if (eq game.game_type "fighter")}}
+    {{> game-cards}}
+    {{/if}}
+    {{/each}}
+  </div>
+</Section>
+<Section class="column is-full m-1">
+  <h2>Party</h2>
+  <div class="row ">
+    {{#each games as |game| }}
+    {{#if (eq game.game_type "party")}}
+    {{> game-cards}}
+    {{/if}}
+    {{/each}}
+  </div>
+</Section>
+```
+
+Example of how we constructed our models. This one below is our Game model. As you can see as previously mentioned the attributes for cover_art and game_type.
+
+```javascript
+const { Model, DataTypes } = require("sequelize");
+
+const sequelize = require("../config/connection.js");
+
+class Game extends Model {}
+
+Game.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
+    game_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+    },
+    cover_art: {
+      type: DataTypes.STRING,
+    },
+    game_type: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "game",
+  }
+);
+
+module.exports = Game;
+```
 
 ## Authors
 
-The Let's Play app was created by:
+- Michael Wence:
+  [Github](https://github.com/mtwence) | [LinkedIn](https://www.linkedin.com/in/michael-wence/)
+- Genesis Rosales:
+  [Github](https://github.com/genrosales11) | [LinkedIn](https://www.linkedin.com/in/genesis-rosales-58a55015a/)
+- Zorigtbaatar Zulkhuu:
+  [Github](https://github.com/zzzorigtbaatar) | [LinkedIn](https://www.linkedin.com/in/zorizulkhuu/)
 
-* Michael Wence:
-[Github](https://github.com/mtwence).
-* Genesis Rosales: 
-[Github](https://github.com/genrosales11).
-* Zorigtbaatar Zulkhuu:
-[Github]( https://github.com/zzzorigtbaatar).
- 
+## Questions
+
+Any issues or questions can be submitted [here](https://github.com/mtwence/lets-play/issues), or you can contact Michael directly at mtwence@gmail.com.
 
 ## License
 
-MIT License
-
-Copyright (c) 2022 mtwence
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-
-
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
